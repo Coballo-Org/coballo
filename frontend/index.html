@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coballo - HOME</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="logo-nav">
+           <a href="index.html"> <i class="fa-solid fa-minimize"></i></a>
+           <a href="index.html"><h1>Coballo</h1></a>
+        </nav>
+        <nav class="home-nav">
+            <ul class="nav-list-one">
+                <li> <a href="avail-projects.html"> AVAILABLE PROJECTS</a></li>
+                <li><a href="myprojects.html">MY PROJECTS</a></li>
+            </ul>
+        </nav>
+        <nav class="signup-nav">
+            <ul class="nav-list-two">
+                <li><button>SIGN UP</button></li>
+                <li><button>LOGIN</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="first-section">
+            <div class="text-side">
+                <h1>Welcome to Coballo <span><br>Let's Get You Started!</span></h1>
+                <p>Are you a software engineer or developer? Are you into tech? Have you worked on projects to the points 
+                    that you got tired of the projects and preferred givig up on them? If you had other developers willing to 
+                    help you complete the unfinished project, would you let them? If you saw an interesting but unfinished project
+                    would you be happy to collaborate with the author? If your answer to any of the questions aforementioned is yes then
+                    you are in the right place.
+                    <br>
+                    Coballo is an open source website geared towards assisting developers who are stuck on a project or who 
+                    are willing to assist developers who are stuck on a project to ensure that ideas are not just abandoned as 
+                    unfinished projects on github. We connect you to github to either share your unfinished projects or to
+                    assist a stuck developer finish a project. If you are interested then click the button below.
+                </p>
+                <button>Get Started</button>
+            </div>
+            <div class="form-side">
+                <form action="/" id="signup">
+                    <h1>Sign Up</h1>
+                    <p>--Quick Sign Up--</p>
+                    <button>Sign Up with Google</button>
+                    <i>or use your email address.</i> 
+                    <input type="text" name="fname" id="fname" required placeholder="Your First Name">
+                    <input type="text" name="lname" id="lname" required placeholder="Your Last Name">
+                    <input type="email" name="email" class="email" required placeholder="myname@example.com">
+                    <input type="password" name="pword" class="pword" required placeholder="**************">
+                    <i>Use at least one letter, one number and seven characters</i>
+                    <button type="submit">Sign Up for Coballo</button>
+                    <i>Already have an accout? Login <span class="login-span" onclick="showLogin()"> Here</span></i>
+                </form>
+                <form action="/" id="login">
+                    <h1>Login</h1>
+                    <p>--Quick Login--</p>
+                    <button>Login with Google</button>
+                    <i>or use your email address.</i> 
+                    <input type="email" name="email" class="email" required placeholder="myname@example.com">
+                    <input type="password" name="pword" class="pword" required placeholder="**************">
+                    
+                    <button type="submit">Login</button>
+                    <i>Don't have an accout? Sign Up<span class="signup-span" onclick="showSignup()"> Here</span></i>
+                </form>
+            </div>
+        </section>
+        <section class="second-section">
+            <div class="first-div">
+                <aside>
+                    
+                    <h2> <i class="fa-solid fa-address-card"></i> ABOUT US</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maiores 
+                        fugiat exercitationem omnis unde modi! Ipsa laboriosam unde tempore accusantium quasi
+                         reiciendis iste quam officia magni repudiandae, sequi minus quos?</p>
+                </aside>
+                <aside>
+                    
+                    <h2> <i class="fa-solid fa-address-book"></i> CONTACT US</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maiores 
+                        fugiat exercitationem omnis unde modi! Ipsa laboriosam unde tempore accusantium quasi
+                         reiciendis iste quam officia magni repudiandae, sequi minus quos?</p>
+                </aside>
+            </div>
+            <div class="second-div"> 
+                <aside>
+                    
+                    <h2> <i class="fa-solid fa-ethernet"></i> PRODUCTS AND SERVICES</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maiores 
+                        fugiat exercitationem omnis unde modi! Ipsa laboriosam unde tempore accusantium quasi
+                         reiciendis iste quam officia magni repudiandae, sequi minus quos?</p>
+                </aside>
+                <aside>
+                    
+                        <h2> <i class="fa-solid fa-tree"></i> START A FREE TRIAL</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maiores 
+                            fugiat exercitationem omnis unde modi! Ipsa laboriosam unde tempore accusantium quasi
+                             reiciendis iste quam officia magni repudiandae, sequi minus quos?</p>
+                </aside>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <section class="footer-section">
+        <div>
+            <h1>Coballo</h1>
+            <p><i class="fa-brands fa-facebook"></i> <i class="fa-brands fa-twitter"></i> <i class="fa-brands fa-instagram"> </i></p>
+        </div>
+        <div>
+            <h3>Terms and Conditions</h3>
+            <h3>Cookies Policy</h3>
+        </div>
+    </section>
+        <div class="copyright">
+            Copyright &copy; DenBenFan, 2022.
+        </div>
+    </footer>
+
+
+<script>
+    
+    let login = document.getElementById("login");
+    let signup = document.getElementById("signup");
+    let loginSpan = document.getElementsByClassName("login-span");
+    let signupSpan = document.getElementsByClassName("signup-span");
+
+    signup.style.display = "none";
+
+    function showLogin (){
+       signup.style.display = "none";
+       login.style.display = "flex";
+    }
+    function showSignup(){
+        login.style.display = "none";
+        signup.style.display = "flex";
+       
+    }
+
+      
+
+</script>
+
+</body>
+</html>
