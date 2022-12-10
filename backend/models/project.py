@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 
 
-class Project(BaseModel):
+class Project(BaseModel, Base):
     """This defines the Project object"""
     title = ""
     description = ""

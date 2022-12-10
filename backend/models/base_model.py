@@ -2,13 +2,18 @@
 
 """This serves as the class which other objects inherit from"""
 
+from sqlalchemy.ext.declarative import declarative_base
 import uuid
 from datetime import datetime
 from models import storage
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
+Base = declarative_base()
+
+
 class BaseModel:
     """The base class"""
+
     def __init__(self, *args, **kwargs):
         """class initaialization"""
         if kwargs:
@@ -25,11 +30,9 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
 
-
     def __str__(self):
         """This is called when the object is to be printed"""
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
-
 
     def to_dict(self):
         """This returns a dict of all the attributes of the object"""
@@ -43,7 +46,6 @@ class BaseModel:
                 my_dict[k] = v
         my_dict['__class__'] = self.__class__.__name__
         return my_dict
-
 
     def save(self):
         """This saves an instance of the current oobject into storage"""
