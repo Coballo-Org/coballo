@@ -28,13 +28,11 @@ class FileStorage:
 
     def save(self):
         """This saves the object to the storage"""
-        my_list = []
+        my_dict = {}
         for k, obj in type(self).__objects.items():
-            my_dict = {}
             my_dict[k] = obj.to_dict()
-            my_list.append(my_dict)
         with open(type(self).__file_path, 'w', encoding='utf-8') as f:
-            json.dump(my_list, f)
+            json.dump(my_dict, f)
 
 
     def reload(self):
@@ -42,15 +40,22 @@ class FileStorage:
         try:
             with open(type(self).__file_path) as f:
                 content = json.load(f)
-            for item in content:
-                for k, dic in item.items():
-                    if 'User' in k.split('.'):
-                        from models.user import User
-                        prototype = User(**dic)
-                    elif 'Project' in k.split('.'):
-                        from models.project import Project
-                        prototype = Project(**dic)
-                    type(self).__objects[k] = prototype
-        except Exception as e:
-            print(e)
+        except Exception:
             pass
+        else:
+            for k, item in content.items():
+                if 'User' in k.split('.'):
+                    from models.user import User
+                    type(self).__objects[k] = User(**item)
+                elif 'Project' in k.split('.'):
+                    from models.project import Project
+                    type(self).__objects[k] = Project(**item)
+
+
+    def delete(self, obj):
+        """This removes an object from the storage"""
+        search_key = obj.__class__.__name__ + '.' + obj.id
+        for key, obj in self.__objects.items():
+            if key == search_key:
+                del self.__objects[key]
+                self.save()

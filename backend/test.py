@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from models import storage
 from models.base_model import BaseModel
 from models.user import User
 from models.project import Project
@@ -16,3 +17,6 @@ if __name__ == '__main__':
     print(user.to_dict())
     print(project.to_dict())
     project.save()
+    user.save()
+
+    storage.delete(user)

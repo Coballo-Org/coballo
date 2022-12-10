@@ -24,7 +24,8 @@ class BaseModel:
             if 'updated_at' not in kwargs:
                 self.updated_at = datetime.now()
             for k, v in kwargs.items():
-                setattr(self, k, v)
+                if k != '__class__':
+                    setattr(self, k, v)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
@@ -36,19 +37,23 @@ class BaseModel:
 
     def to_dict(self):
         """This returns a dict of all the attributes of the object"""
-        my_dict = {}
-        for k, v in self.__dict__.items():
-            if k == 'created_at':
-                my_dict[k] = v.strftime(time)
-            elif k == 'updated_at':
-                my_dict[k] = v.strftime(time)
-            else:
-                my_dict[k] = v
-        my_dict['__class__'] = self.__class__.__name__
-        return my_dict
+        dictionary = self.__dict__.copy()
+        dictionary['__class__'] = self.__class__.__name__
+        try:
+            dictionary['created_at'] = self.created_at.isoformat()
+            dictionary['updated_at'] = self.updated_at.isoformat()
+        except Exception:
+            pass
+        return (dictionary)
 
     def save(self):
         """This saves an instance of the current oobject into storage"""
-        self.update_at = datetime.now()
+        self.updated_at = datetime.now()
         storage.new(self)
         storage.save()
+
+
+    def delete(self):
+        """This deletes an instance from the storage"""
+        from models import storage
+        storage.delete(self)
