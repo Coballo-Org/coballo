@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
-from models.base_model import BaseModel, Base
+from models.base_model import BaseModel
 
 
-class User(BaseModel, Base):
+class User(BaseModel):
     """This defines the user object"""
     name = ""
     email = ""

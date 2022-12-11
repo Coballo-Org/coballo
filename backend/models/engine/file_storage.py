@@ -55,7 +55,8 @@ class FileStorage:
     def delete(self, obj):
         """This removes an object from the storage"""
         search_key = obj.__class__.__name__ + '.' + obj.id
-        for key, obj in self.__objects.items():
+        for key, val in self.__objects.items():
             if key == search_key:
                 del self.__objects[key]
                 self.save()
+                return
