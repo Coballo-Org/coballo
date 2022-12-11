@@ -11,6 +11,6 @@ Back-end: Python, MySQL </br>
 
 ## AUTHORS
 
-Benjamin Eruvieru [Github](https://github.com/benjamineruvieru)</br>
 Akinwonjowo Dennis [Github](https://github.com/Dennisco12) / [LinkedIn](https://linkedin.com/dennis-akinwonjowo)</br>
+Benjamin Eruvieru [Github](https://github.com/benjamineruvieru)</br>
 Nnaemeka Joseph [Github](https://github.com/nnaemekaxi)</br>
