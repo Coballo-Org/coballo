@@ -64,7 +64,7 @@ def update_project(project_id):
     if not request.json:
         abort(404, "Not a JSON")
     request_dict = request.get_json()
-    for k, obj in storage.all(Project).items():
+    for key, obj in storage.all(Project).items():
         if obj.id == project_id:
             for k, v in request_dict.items():
                 setattr(obj, k, v)

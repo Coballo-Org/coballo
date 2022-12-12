@@ -26,3 +26,44 @@ def get_user(user_id):
 
 @app_views.route('/users', strict_slashes=False, methods=['POST'])
 def create_user():
+    """This creates a new User object and adds it to storage"""
+    if not request.json:
+        abort(400, "Not a JSON")
+    if 'email' not in request.json:
+        abort(400, "Add an email")
+    if 'password' not in request.json:
+        abort(400, "Add a password")
+    request_dict = request.get_json()
+    model = User(**request_dict)
+    storage.new(model)
+    storage.save()
+    return jsonify(model.to_dict()), 200
+
+
+@app_views.route('/users/<user_id>', strict_slashes=False, methods=['PUT'])
+def update_user(user_id):
+    """This updates the attributes of a User"""
+    if not request.json:
+        abort(400, "Not a JSON")
+    request_dict = request.get_json()
+    search_key = 'User.' + user_id
+    for key, obj in storage.all(User).items():
+        if key == search_key:
+            for k, v in request_dict.items():
+                if k not in ('created_at', 'updated_at', 'id', 'email'):
+                    setattr(obj, k, v)
+                    obj.save()
+            storage.save()
+            return jsonify(obj.to_dict())
+    abort(404, "User not found")
+
+
+@app_views.route('/users/<user_id>', strict_slashes=False, methods=['DELETE'])
+def delete_user(user_id):
+    """This deletes a User from storage"""
+    search_key = 'User.' + user_id
+    for key, obj in storage.all(User).items():
+        if key == search_key:
+            storage.delete(obj)
+            return {}
+    abort(404, "No User found")
