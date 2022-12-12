@@ -3,8 +3,9 @@
 from models.base_model import BaseModel, Base
 
 
-class Project(BaseModel):
+class Project(BaseModel, Base):
     """This defines the Project object"""
+    __tablename__ = 'projects'
     title = ""
     description = ""
     owner = ""
