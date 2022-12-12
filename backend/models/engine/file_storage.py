@@ -16,7 +16,7 @@ class FileStorage:
         else:
             new_dict = {}
             for k, v in type(self).__objects.items():
-                if cls in k.split('.'):
+                if cls.__name__ in k:
                     new_dict[k] = v
             return new_dict
 
@@ -60,3 +60,11 @@ class FileStorage:
                 del self.__objects[key]
                 self.save()
                 return
+
+
+    def get(self, cls, ids):
+        """This returns an object from storage"""
+        search_key = cls + '.' + ids
+        for key, val in self.all().items():
+            if key == search_key:
+                return val

@@ -57,3 +57,9 @@ class BaseModel:
         """This deletes an instance from the storage"""
         from models import storage
         storage.delete(self)
+
+    def update(self, new_dict):
+        """This updates the attribute of the object"""
+        for k, v in new_dict.items:
+            setattr(self, k, v)
+            self.save()
