@@ -75,9 +75,8 @@ class Coballo(cmd.Cmd):
                 all_objs.append(obj.to_dict())
         else:
             arg = args.split()
-            for k, obj in storage.all().items():
-                if arg[0] in k.split('.'):
-                    all_objs.append(obj.to_dict())
+            for k, obj in storage.all(arg[0]).items():
+                all_objs.append(obj.to_dict())
         for item in all_objs:
             print(item)
 

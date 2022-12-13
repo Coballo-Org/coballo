@@ -4,8 +4,11 @@ from os import getenv
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
 from models.base_model import Base
+from models.user import User
+from models.project import Project
 
 
+classes = {'User': User, 'Project': Project}
 class DBStorage():
     """
     Database Engine for AirBnB project
@@ -30,6 +33,17 @@ class DBStorage():
                                       expire_on_commit=False)
         Session = scoped_session(self.__session)
         self.__session = Session()
+
+    def all(self, cls=None):
+        """query on the current database session"""
+        new_dict = {}
+        for clss in classes:
+            if cls is None or cls is classes[clss] or cls is clss:
+                objs = self.__session.query(classes[clss]).all()
+                for obj in objs:
+                    key = obj.__class__.__name__ + '.' + obj.id
+                    new_dict[key] = obj
+        return (new_dict)
 
     def new(self, obj):
         """Add the object to the current

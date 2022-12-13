@@ -50,6 +50,8 @@ class BaseModel:
             dictionary['updated_at'] = self.updated_at.isoformat()
         except Exception:
             pass
+        if '_sa_instance_state' in dictionary:
+            del dictionary['_sa_instance_state']
         return (dictionary)
 
     def save(self):
