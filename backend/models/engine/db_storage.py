@@ -18,16 +18,16 @@ class DBStorage():
 
     def __init__(self):
         """Init method"""
-        self.__engine = create_engine('mysql+mysqldb://coballo_dev:coballo_dev_pwd@localhost:3306/coballo_dev_db',
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}:3306/{}'.format(
+                                        getenv('COBALLO_DEV'),
+                                        getenv('COBALLO_DEV_PWD'),
+                                        getenv('COBALLO_HOST'),
+                                        getenv('COBALLO_DEV_DB')),
                                       pool_pre_ping=True)
-        Base.metadata.drop_all(bind=self.__engine)
 
     def reload(self):
         """Create the current database session (self.__session) from
         the engine (self.__engine) by using a sessionmaker"""
-        from models.user import User
-        from models.project import Project
-
         Base.metadata.create_all(self.__engine)
         self.__session = sessionmaker(bind=self.__engine,
                                       expire_on_commit=False)
