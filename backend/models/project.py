@@ -12,3 +12,7 @@ class Project(BaseModel, Base):
     past_contributors = ""
     status = ""
     close = ""
+
+    def __init__(self, *args, **kwargs):
+        """initializes project"""
+        super().__init__(*args, **kwargs)

@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
 from models.base_model import Base
 
+
 class DBStorage():
     """
     Database Engine for AirBnB project
@@ -14,17 +15,17 @@ class DBStorage():
 
     def __init__(self):
         """Init method"""
-        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
-                                      .format(getenv('COBALLO_MYSQL_USER'),
-                                              getenv('COBALLO_MYSQL_PWD'),
-                                              getenv('COBALLO_MYSQL_HOST'),
-                                              getenv('COBALLO_MYSQL_DB')),
+        self.__engine = create_engine('mysql+mysqldb://coballo_dev:coballo_dev_pwd@localhost:3306/coballo_dev_db',
                                       pool_pre_ping=True)
-        self.create_session()
+        Base.metadata.drop_all(bind=self.__engine)
 
-    def create_session(self):
+    def reload(self):
         """Create the current database session (self.__session) from
         the engine (self.__engine) by using a sessionmaker"""
+        from models.user import User
+        from models.project import Project
+
+        Base.metadata.create_all(self.__engine)
         self.__session = sessionmaker(bind=self.__engine,
                                       expire_on_commit=False)
         Session = scoped_session(self.__session)
@@ -48,10 +49,3 @@ class DBStorage():
     def close(self):
         """Removes the session"""
         self.__session.close()
-
-    def reload(self):
-        """reloads data from the database"""
-        Base.metadata.create_all(self.__engine)
-        sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        Session = scoped_session(sess_factory)
-        self.__session = Session

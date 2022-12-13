@@ -11,3 +11,7 @@ class User(BaseModel, Base):
     email = ""
     password = ""
     github_username = ""
+
+    def __init__(self, *args, **kwargs):
+        """initializes user"""
+        super().__init__(*args, **kwargs)
