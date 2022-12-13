@@ -3,7 +3,7 @@
 from os import getenv
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
-
+from models.base_model import Base
 
 class DBStorage():
     """
@@ -48,3 +48,10 @@ class DBStorage():
     def close(self):
         """Removes the session"""
         self.__session.close()
+
+    def reload(self):
+        """reloads data from the database"""
+        Base.metadata.create_all(self.__engine)
+        sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(sess_factory)
+        self.__session = Session

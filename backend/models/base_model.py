@@ -5,7 +5,7 @@
 from sqlalchemy.ext.declarative import declarative_base
 import uuid
 from datetime import datetime
-from models import storage
+import models
 time = "%Y-%m-%dT%H:%M:%S.%f"
 
 Base = declarative_base()
@@ -49,8 +49,8 @@ class BaseModel:
     def save(self):
         """This saves an instance of the current oobject into storage"""
         self.updated_at = datetime.now()
-        storage.new(self)
-        storage.save()
+        models.storage.new(self)
+        models.storage.save()
 
 
     def delete(self):
