@@ -29,7 +29,13 @@ class Coballo(cmd.Cmd):
         if arg[0] not in classes:
             print("* Invalid class name *")
             return False
-        prototype = classes[arg[0]]()
+        pr_dict = {}
+        for item in arg[1:]:
+            if '=' in item:
+                key_pair = item.split('=')
+                pr_dict[key_pair[0]] = key_pair[1]
+        print(pr_dict)
+        prototype = classes[arg[0]](**pr_dict)
         print(prototype.id)
         prototype.save()
 
@@ -59,7 +65,7 @@ class Coballo(cmd.Cmd):
                 if k == search_key:
                     setattr(obj, arg[2], arg[3])
                     obj.updated_at = datetime.now().isoformat()
-                    storage.save()
+                    obj.save()
         else:
             print("* Instance not found *")
             return False
@@ -75,8 +81,9 @@ class Coballo(cmd.Cmd):
                 all_objs.append(obj.to_dict())
         else:
             arg = args.split()
-            for k, obj in storage.all(arg[0]).items():
-                all_objs.append(obj.to_dict())
+            for k, obj in storage.all().items():
+                if arg[0] in k.split('.'):
+                    all_objs.append(obj.to_dict())
         for item in all_objs:
             print(item)
 
@@ -101,6 +108,10 @@ class Coballo(cmd.Cmd):
         else:
             print("* Instance not found *")
             return False
+
+    def do_close(self, args=None):
+        """Calls the close function of storage"""
+        storage.close()
 
 
 if __name__ == '__main__':

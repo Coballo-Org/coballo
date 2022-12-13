@@ -1,0 +1,175 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter";
+    list-style: none;
+}
+body{
+    max-width: 1000;
+}
+.site-header{
+    height: 70px;
+    display: flex;
+    background-color: blueviolet;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    color: white;
+    width: 100%;
+}
+.site-header a{
+    color: white;
+    text-decoration: none;
+}
+.logo-nav{
+    width: 10%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 20%;
+}
+
+.logo-nav i{
+    font-size: 24px;
+}
+
+.nav-list-one{
+    display: flex;
+    width: 110%;
+    gap: 5%;
+}
+.nav-list-one a:hover{
+    border-bottom: 2px white solid;
+}
+.nav-list-two{
+    width: 110%;
+    display: flex;
+    gap: 10%;
+}
+.nav-list-two button{
+    height: 30px;
+    width: 110%;
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+}
+.nav-list-two button:hover{
+    background-color: aliceblue;
+}
+.first-section{
+    padding: 0 0 0 5%;
+    margin-top: 32px;
+    display: flex;
+    gap: 5%;
+}
+.text-side{
+    width: 100%;
+    line-height: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.text-side h1{
+    font-size: 24px;
+}
+.text-side button{
+    background-color: blueviolet;
+    height: 60px;
+    width: 30%;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+}
+.text-side button:hover, form button:hover{
+    border: 1px solid blueviolet;
+    background-color: white;
+    color: blueviolet;
+}
+.form-side{
+    max-height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    padding: 1% 3%;
+    gap: 62px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+form{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 24px;
+}
+form p{
+    font-size: 16px;
+}
+form i{
+    font-size: 12px;
+}
+form input{
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    padding-left: 5px;
+}
+form button{
+    height: 30px;
+    border-radius: 8px;
+    background-color: blueviolet;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+.login-span{
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    color: blueviolet;
+}
+.signup-span{
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    color: blueviolet;
+}
+.second-section{
+    padding: 0 5%;
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+}
+.first-div, .second-div{
+    display: flex;
+    line-height: 32px;
+    margin-bottom: 32px;
+}
+footer{
+    padding: 2% 5%;
+    background-color: blueviolet;
+    color: white;
+}
+.footer-section{
+    display: flex;
+    justify-content: space-between;
+}
+.copyright{
+    margin-top: 16px;
+    text-align: center;
+}
+@media screen and (max-width: 850px) {
+    .site-header{
+        font-size: 12px;
+    }
+    .first-section{
+        flex-direction: column;
+        gap: 16px;
+    }
+    .first-div, .second-div{
+        flex-direction: column;
+    }
+}
