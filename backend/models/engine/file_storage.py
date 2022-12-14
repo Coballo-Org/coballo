@@ -68,3 +68,7 @@ class FileStorage:
         for key, val in self.all().items():
             if key == search_key:
                 return val
+
+
+    def close(self):
+        self.reload()
