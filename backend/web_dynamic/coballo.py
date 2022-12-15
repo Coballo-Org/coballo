@@ -21,7 +21,7 @@ def coballo():
     """This sets up the templates"""
     users = storage.all(User).values()
     projects = storage.all(Project).values()
-    return render_template('frontend/web/index.html',
+    return render_template('index.html',
                             users=users,
                             projects=projects)
 

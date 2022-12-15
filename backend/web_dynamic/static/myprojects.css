@@ -1,0 +1,166 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter";
+    list-style: none;
+}
+body{
+    max-width: 1000;
+}
+.site-header{
+    height: 70px;
+    display: flex;
+    background-color: blueviolet;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    color: white;
+    width: 100%;
+}
+.site-header a{
+    color: white;
+    text-decoration: none;
+}
+.logo-nav{
+    width: 10%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 20%;
+}
+
+.logo-nav i{
+    font-size: 24px;
+}
+
+.nav-list-one{
+    display: flex;
+    width: 110%;
+    gap: 5%;
+}
+.nav-list-one a:hover{
+    border-bottom: 2px white solid;
+}
+.nav-list-two{
+    width: 110%;
+    display: flex;
+    gap: 10%;
+}
+.nav-list-two button{
+    height: 30px;
+    width: 110%;
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+}
+.nav-list-two button:hover{
+    background-color: aliceblue;
+}
+main{
+    min-height: 500px;
+    display: flex;
+    margin: 64px 5% 32px 5%;
+}
+.workspace{
+    width: 30%;
+    border-right: 2px solid blueviolet;
+    line-height: 48px;
+}
+.workspace h1{
+    margin-bottom: 32px;
+}
+.workspace ul li{
+    list-style:square;
+    border-bottom: 1px solid gray;
+    margin-right: 5%;
+}
+.mainreposection{
+    width: 50%;
+    border-right: 2px solid blueviolet;
+    line-height: 48px;
+    padding: 0 2%;
+}
+.mainreposection h1{
+    color: blueviolet;
+    font-size: 16px;
+    border-bottom: 1px solid black;
+}
+.mainreposection h1 span{
+    color: black;
+    font-size: 24px;
+    margin-left: 10%;
+}
+.mainreposection h6{
+    border-bottom: 1px solid black;
+}
+.mainreposection h6 span{
+    margin-right: 5%;
+}
+.mainreposection p{
+    line-height: 24px;
+    margin-top: 64px;
+    font-weight: 700;
+}
+.mainreposection button{
+    width: 30%;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    background-color: blueviolet;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+.mainreposection button:hover{
+    border: 1px solid blueviolet;
+    background-color: white;
+    color: blueviolet;
+}
+.commentsection{
+    margin-top: 64px;
+    padding: 0 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+footer{
+    padding: 2% 5%;
+    background-color: blueviolet;
+    color: white;
+}
+.footer-section{
+    display: flex;
+    justify-content: space-between;
+}
+.copyright{
+    margin-top: 16px;
+    text-align: center;
+}
+@media screen and (max-width:850px){
+    main{
+        flex-direction: column;
+        gap: 16px;
+        
+    }
+    .site-header{
+        font-size: 12px;
+    }
+    .workspace{
+        border-right: none;
+        width: 90%;
+        margin-bottom: 32px;
+    }
+    .mainreposection{
+        width: 90%;
+        border-right: none;
+        border-top: 5px solid blueviolet;
+    }
+    .mainreposection p{
+        line-height: 0;
+    }
+    .commentsection{
+        width: 90%;
+        border-top: 5px solid blueviolet;
+    }
+}
