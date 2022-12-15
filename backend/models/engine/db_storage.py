@@ -6,6 +6,7 @@ from sqlalchemy import create_engine
 from models.base_model import Base
 from models.user import User
 from models.project import Project
+from models.language import Language
 
 
 classes = {'User': User, 'Project': Project}

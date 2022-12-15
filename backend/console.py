@@ -6,8 +6,9 @@ from models.user import User
 from models.project import Project
 from models import storage
 from datetime import datetime
+from models.language import Language
 
-classes = {'User': User, 'Project': Project}
+classes = {'User': User, 'Project': Project, 'Language': Language}
 
 
 class Coballo(cmd.Cmd):

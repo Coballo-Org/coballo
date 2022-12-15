@@ -50,6 +50,9 @@ class FileStorage:
                 elif 'Project' in k.split('.'):
                     from models.project import Project
                     type(self).__objects[k] = Project(**item)
+                elif 'Language' in k.split('.'):
+                    from models.language import Language
+                    type(self).__objects[k] = Language(**item)
 
 
     def delete(self, obj):
