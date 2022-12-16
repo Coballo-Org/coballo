@@ -3,7 +3,7 @@
 $('document').ready(function () {
 	  const api = 'http://' + window.location.hostname;
 	// Create new user
-	button = getElementById("signup_button")
+	button = document.getElementById("signup_button")
 	button.onclick( function() {
 		const req = new XMLHttpRequest();
 		const newUser = {
