@@ -7,6 +7,8 @@
     <title>Coballo - HOME</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href={{ url_for('static', filename="styles.css") }}>
+    <SCRIPT src="https://code.jquery.com/jquery-3.2.1.min.js"></SCRIPT>
+    <script href={{ url_for('static', filename="scripts/script") }}></script>
 </head>
 <body>
     <header class="site-header">
@@ -55,7 +57,7 @@
                     <input type="email" name="email" class="email" required placeholder="myname@example.com">
                     <input type="password" name="pword" class="pword" required placeholder="**************">
                     <i>Use at least one letter, one number and seven characters</i>
-                    <button type="submit">Sign Up for Coballo</button>
+                    <button type="submit" id="signup">Sign Up for Coballo</button>
                     <i>Already have an accout? Login <span class="login-span" onclick="showLogin()"> Here</span></i>
                 </form>
                 <form action="/" id="login">

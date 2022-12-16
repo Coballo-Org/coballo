@@ -101,11 +101,12 @@ class Coballo(cmd.Cmd):
             return False
         search_key = arg[0] + '.' + arg[1]
         if search_key in storage.all():
-            for key, obj in storage.all().items():
+            for key, objs in storage.all().items():
                 if key == search_key:
-                    del storage.all()[search_key]
+                    obj = storage.all()[search_key]
+                    storage.delete(obj)
                     storage.save()
-                    return False
+                    return
         else:
             print("* Instance not found *")
             return False

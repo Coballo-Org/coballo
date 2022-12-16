@@ -37,7 +37,7 @@ def create_user():
     model = User(**request_dict)
     storage.new(model)
     storage.save()
-    return jsonify(model.to_dict()), 200
+    return jsonify(model.to_dict()), 201
 
 
 @app_views.route('/users/<user_id>', strict_slashes=False, methods=['PUT'])

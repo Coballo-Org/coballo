@@ -6,6 +6,7 @@ from models.base_model import BaseModel, Base
 
 class Language(BaseModel, Base):
     """Entry point for the class"""
+    __tablename__ = 'languages'
     def __init__(self, *args, **keargs):
         super().__init__(*args, **kwargs)
 
