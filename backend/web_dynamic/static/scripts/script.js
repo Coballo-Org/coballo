@@ -3,7 +3,8 @@
 $('document').ready(function () {
 	  const api = 'http://' + window.location.hostname;
 	// Create new user
-	$("BUTTON#signup").onclick( function() {
+	button = getElementById("signup_button")
+	button.onclick( function() {
 		const req = new XMLHttpRequest();
 		const newUser = {
 			name: $("INPUT#fname") + $("INPUT#lname")
@@ -17,7 +18,7 @@ $('document').ready(function () {
 				const res = JSON.parse(req.responseText);
 				alert(res.name + "account has been created succesfully");
 			} else {
-				console.log("An error has ocurred and the account cannot be created");
+				alert("An error has ocurred and the account cannot be created");
 			}
 		});
 		req.send(JSON.stringify(newUser));
