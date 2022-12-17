@@ -10,7 +10,7 @@
     <SCRIPT src="https://code.jquery.com/jquery-3.2.1.min.js"
 	    integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" 
     	crossorigin="anonymous"></script>
-    <!--<script href={{ url_for('static', filename="scripts/script") }}></script>-->
+    <script href={{ url_for('static', filename="scripts/script") }}></script>
 </head>
 <body>
     <header class="site-header">
@@ -145,18 +145,6 @@
         signup.style.display = "flex";
     }
 
-$("#signup_button").click(function() {
-	const name = $("#fname").val() + ' ' + $("#lname")
-	const email = $("#email").val()
-	const password = $("#pword").val()
-
-	$.post("http://0.0.0.0:5000/coballo/users",{
-		name:name,
-		email:email,
-		password:password
-	},function(response) {
-		alert("User created successfully")
-	});
 });
 
       
