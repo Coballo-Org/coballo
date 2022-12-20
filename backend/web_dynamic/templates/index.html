@@ -7,8 +7,6 @@
     <title>Coballo - HOME</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href={{ url_for('static', filename="styles.css") }}>
-    <SCRIPT src="https://code.jquery.com/jquery-3.2.1.min.js"></SCRIPT>
-    <script src={{ url_for('static', filename="scripts/script.js") }}></script>
 </head>
 <body>
     <header class="site-header">
@@ -47,7 +45,8 @@
                 <button>Get Started</button>
             </div>
             <div class="form-side">
-		    <form id="signup" action='http://100.25.165.74:5005/coballo/users' method='post'>
+		    <div class="form" id="signup">
+		    <!--<form id="signup">-->
 			    <h1>Sign Up</h1>
 			    <p>--Quick Sign Up--</p>
 			    <button>Sign Up with Google</button>
@@ -57,10 +56,11 @@
 			    <input type="email" name="email" class="email" required placeholder="myname@example.com">
 			    <input type="password" name="pword" class="pword" required placeholder="**************">
 			    <i>Use at least one letter, one number and seven characters</i>
-			    <button type="submit" id="signup-button" onclick="postNewUser()">Sign Up for Coballo</button>
+			    <button type="submit" id="signup-button">Sign Up for Coballo</button>
 			    <i>Already have an accout? Login <span class="login-span" onclick="showLogin()"> Here</span></i>
-		    </form>
-                <form action="/" id="login">
+		    <!--</form>-->
+		    </div>
+                <div class="form" id="login">
                     <h1>Login</h1>
                     <p>--Quick Login--</p>
                     <button>Login with Google</button>
@@ -70,7 +70,7 @@
                     
                     <button type="submit">Login</button>
                     <i>Don't have an accout? Sign Up<span class="signup-span" onclick="showSignup()"> Here</span></i>
-                </form>
+		</div>
             </div>
         </section>
         <section class="second-section">
@@ -124,6 +124,27 @@
         </div>
     </footer>
 
+    <script>
+	    let login = document.getElementById("login");
+let signup = document.getElementById("signup");
+let loginSpan = document.getElementById("login-span");
+let signupSpan = document.getElementsByClassName("signup-span");
 
+login.style.display = "flex";
+signup.style.display = "none";
+
+function showLogin (){
+        signup.style.display = "none";
+        login.style.display = "flex";
+}
+function showSignup(){
+        login.style.display = "none";
+        signup.style.display = "flex";
+}
+    </script>
+
+
+    <SCRIPT src="https://code.jquery.com/jquery-3.2.1.min.js"></SCRIPT>
+    <script src={{ url_for('static', filename="scripts/script.js") }}></script>
 </body>
 </html>

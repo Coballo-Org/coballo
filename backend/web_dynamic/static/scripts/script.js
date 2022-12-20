@@ -1,51 +1,34 @@
-const api = 'http://' + window.location.hostname;
-let login = document.getElementById("login");
-let signup = document.getElementById("signup");
-let loginSpan = document.getElementsByClassName("login-span");
-let signupSpan = document.getElementsByClassName("signup-span");
 
-login.style.display = "none";
+// Create new user (sign up)
 
-function showLogin (){
-	signup.style.display = "none";
-	login.style.display = "flex";
-}
-function showSignup(){
-	login.style.display = "none";
-       	signup.style.display = "flex";
-}
+$(function (){
+	var $name = $('#fname');
+	var $lname = $('#lname');
+	var $email = $('.email');
+	var $pword = $('.pword');
 
-// Create new user
-createNewUser()
+	$('#signup-button').on('click', function() {
+		var user = {
+			"name": $name.val() + ' ' + $lname.val(),
+			"email": $email.val(),
+			"password": $pword.val(),
+		};
 
-function createNewUser () {
-	form = document.getElementById("signup-button");
-	form.addEventListener('submit', postNewUser);
-}
+		$.ajax({
+			type: 'POST',
+			url: 'http://100.25.165.74:5005/coballo/users',
+			data: JSON.stringify(user),
+			contentType: 'application/json',
+			dataType: 'json',
+			success: function(newUser) {
+				alert("Your account has been created successfully");
+			},
+			error: function() {
+				alert('An error has occured and the user cannot be created');
+			}
+		});
+	});
+});
 
-
-function postNewUser (event) {
-	event.preventDefault()
-	alert("You clicked the submit button");
-	const newUser = {
-		name: $("INPUT#fname").val() + $("INPUT#lname").val(),
-		email: $("INPUT#email").val(),
-		password: $("INPUT#pword").val()
-	};
-	const createUrl = 'http://0.0.0.0:5005/coballo/users';
-	fetch(createUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newUser) });
-
-	/**$.ajax({
-		type: 'POST',
-		url: api + ':5005/coballo/users',
-		data: json.parse(newUser),
-		ContentType: 'application/json',
-		dataType: 'json',
-		success: function(User) {
-			alert('User ' + User.name + " created");
-		},
-		error: function() {
-			alert("An error has occured");
-		}
-	});*/
-};
+// Get old user (log in)
+$(function () {
