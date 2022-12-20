@@ -47,7 +47,7 @@
                 <button>Get Started</button>
             </div>
             <div class="form-side">
-		    <form id="signup" action='http://100.25.165.74:5005/coballo/user' method='post'>
+		    <form id="signup" action='http://100.25.165.74:5005/coballo/users' method='post'>
 			    <h1>Sign Up</h1>
 			    <p>--Quick Sign Up--</p>
 			    <button>Sign Up with Google</button>
@@ -57,7 +57,7 @@
 			    <input type="email" name="email" class="email" required placeholder="myname@example.com">
 			    <input type="password" name="pword" class="pword" required placeholder="**************">
 			    <i>Use at least one letter, one number and seven characters</i>
-			    <button type="submit" id="signup-button">Sign Up for Coballo</button>
+			    <button type="submit" id="signup-button" onclick="postNewUser()">Sign Up for Coballo</button>
 			    <i>Already have an accout? Login <span class="login-span" onclick="showLogin()"> Here</span></i>
 		    </form>
                 <form action="/" id="login">

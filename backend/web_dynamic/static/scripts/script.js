@@ -4,7 +4,6 @@ let signup = document.getElementById("signup");
 let loginSpan = document.getElementsByClassName("login-span");
 let signupSpan = document.getElementsByClassName("signup-span");
 
-signup.style.display = "flex";
 login.style.display = "none";
 
 function showLogin (){
@@ -49,4 +48,4 @@ function postNewUser (event) {
 			alert("An error has occured");
 		}
 	});*/
-});
+};
