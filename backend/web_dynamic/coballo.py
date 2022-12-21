@@ -18,13 +18,14 @@ def teardown_db(exception):
 
 @app.route('/coballo', strict_slashes=False)
 def coballo():
-    """This sets up the templates"""
+    """This sets up the index template"""
     users = storage.all(User).values()
     projects = storage.all(Project).values()
     return render_template('index.html',
                             users=users,
                             projects=projects)
 
-    
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5004)

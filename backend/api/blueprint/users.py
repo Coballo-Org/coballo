@@ -23,10 +23,8 @@ def get_user(user_id):
             return jsonify(obj.to_dict())
     abort(404, "User not found")
 
-
-@app_views.route('/users/<str:email>/<str:pword>', strict_slashes=False,
-                methods=['GET'])
-def get_user_by_email_pword(email, pword):
+@app_views.route('/user', strict_slashes=False, methods=['POST'])
+def get_pword():
     """This searches the storage for an email and a password and returns
     the corresponding user"""
     if not request.json:
@@ -35,9 +33,11 @@ def get_user_by_email_pword(email, pword):
         abort(400, "Add an email")
     if "password" not in request.json:
         abort(400, "Add a password")
+    request_dict = request.get_json()
+
     for key, obj in storage.all(User).items():
-        if obj.email and obj.email == email:
-            if obj.password and obj.password == pword:
+        if obj.email == request_dict['email']:
+            if obj.password == request_dict['password']:
                 return jsonify(obj.to_dict())
     abort(404, "User not found")
 
