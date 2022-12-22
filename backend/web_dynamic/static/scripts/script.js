@@ -29,6 +29,7 @@ $(function (){
 					"email": newUser.email,
 				}
 				alert(newUser.first_name + " account has been created successfully");
+				window.localStorage.clear();
 				window.localStorage.setItem('presentUser', JSON.stringify(presentUser));
 				window.location = "../static/myprojects.html"
 			},
@@ -63,9 +64,10 @@ $(function () {
 					"id": oldUser.id,
 					"email": oldUser.email,
 				}
+				window.localStorage.clear();
 				window.localStorage.setItem('presentUser', JSON.stringify(presentUser));
-				alert("You have successfully logged in");
 				window.location = "../static/myprojects.html";
+				alert("You have successfully logged in");
 			},
 			error: function() {
 				alert("You have entered incorrect details, please check and try again");

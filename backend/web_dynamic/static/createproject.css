@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter";
+    list-style: none;
+}
+body{
+    max-width: 1000;
+}
+.site-header{
+    height: 70px;
+    display: flex;
+    background-color: blueviolet;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    color: white;
+    width: 100%;
+}
+.site-header a{
+    color: white;
+    text-decoration: none;
+}
+.logo-nav{
+    width: 10%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 20%;
+}
+
+.logo-nav i{
+    font-size: 24px;
+}
+
+.nav-list-one{
+    display: flex;
+    width: 110%;
+    gap: 5%;
+}
+.nav-list-one a:hover{
+    border-bottom: 2px white solid;
+}
+.nav-list-two{
+    width: 110%;
+    display: flex;
+    gap: 10%;
+}
+.nav-list-two button{
+    height: 30px;
+    width: 110%;
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+}
+.nav-list-two button:hover{
+    background-color: aliceblue;
+}
+main{
+    min-height: 500px;
+    /*display: flex;*/
+    margin: 64px 5% 32px 5%;
+}
+button{
+    width: 30%;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    background-color: blueviolet;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+button:hover{
+    border: 1px solid blueviolet;
+    background-color: white;
+    color: blueviolet;
+}
+.head {
+	text-align: center;
+}
+footer{
+    padding: 2% 5%;
+    background-color: blueviolet;
+    color: white;
+}
+.footer-section{
+    display: flex;
+    justify-content: space-between;
+}
+.copyright{
+    margin-top: 16px;
+    text-align: center;
+}
+@media screen and (max-width:850px){
+    main{
+        flex-direction: column;
+        gap: 16px;
+
+    }
+    .site-header{
+        font-size: 12px;
+    }
+    .workspace{
+        border-right: none;
+        width: 90%;
+        margin-bottom: 32px;
+    }
+    .mainreposection{
+        width: 90%;
+        border-right: none;
+        border-top: 5px solid blueviolet;
+    }
+    .mainreposection p{
+        line-height: 0;
+    }
+    .commentsection{
+        width: 90%;
+        border-top: 5px solid blueviolet;
+    }
+}

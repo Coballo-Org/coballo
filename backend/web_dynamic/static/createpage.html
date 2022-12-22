@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coballo - MY PROJECTS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="createproject.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="logo-nav">
+           <a href="index.html"> <i class="fa-solid fa-minimize"></i></a>
+           <a href="index.html"><h1>Coballo</h1></a>
+        </nav>
+        <nav class="home-nav">
+            <ul class="nav-list-one">
+                <li> <a href="avail-projects.html"> AVAILABLE PROJECTS</a></li>
+                <li><a href="myprojects.html">MY PROJECTS</a></li>
+            </ul>
+        </nav>
+        <nav class="signup-nav">
+            <ul class="nav-list-two">
+                <li><button id="logout">LOG OUT</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+	    <h2 class="head"> Create a New Project</h2><br><br>
+	    <p><b>Title</b>: <span><input type="text" id="title"></span></p><br>
+	    <p><b>Languages</b>: <span><input type="text" id="languages"></span></p><br>
+	    <p><b>Description</b>: <span><input type="text" id="description"></span></p><br>
+	    <p><b>README</b>: <span><textarea type="text" id="readme"></textarea></span></p><br>
+	    <p><b>Github Link</b>: <span> <input type="text" id="link"></span></p><br>
+	    <br><br>
+	    <button id="create"> Create Project</button>
+    </main>
+    <footer>
+        <section class="footer-section">
+        <div>
+            <h1>Coballo</h1>
+            <p><i class="fa-brands fa-facebook"></i> <i class="fa-brands fa-twitter"></i> <i class="fa-brands fa-instagram"> </i></p>
+        </div>
+        <div>
+            <h3>Terms and Conditions</h3>
+            <h3>Cookies Policy</h3>
+        </div>
+    </section>
+        <div class="copyright">
+            Copyright &copy; DenBenFan, 2022.
+        </div>
+    </footer>
+
+
+    <SCRIPT src="https://code.jquery.com/jquery-3.2.1.min.js"></SCRIPT>
+    <script src= "scripts/createproject.js"></script>
+</body>
+</html>

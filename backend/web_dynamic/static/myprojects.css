@@ -117,6 +117,22 @@ main{
     background-color: white;
     color: blueviolet;
 }
+
+#addproject{
+    width: 85%;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    background-color: blueviolet;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+#addproject:hover{
+    border: 1px solid blueviolet;
+    background-color: white;
+    color: blueviolet;
+}
 .commentsection{
     margin-top: 64px;
     padding: 0 2%;

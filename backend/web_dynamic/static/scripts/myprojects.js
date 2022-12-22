@@ -25,11 +25,18 @@ $(function () {
 		success: function (projects) {
 			$.each(projects, function (index, item) {
 				$("#project-repos").append('<li>' + item.title + '</li>')
-				$("#repo-info").append("<br><h1>Repo Name:<span>" + item.title + "</span></h1><h6><span>Description:</span>" + item.description + "</h6><p>README:</p><i>" + item.description + "</i><br><br><button>Go to Code</button><br><br><br>")
+				$("#repo-info").append("<br><h1>Project Title:<span>" + item.title + "</span></h1><h6><span>Description:</span>" + item.description + "</h6><p>README:</p><i>" + item.description + "</i><br><br><button>Go to Code</button><br><br><br>")
 			});
 		},
 		error: function () {
 			alert("The browser could not access this user's projects");
 		},
+	});
+});
+
+// create new project
+$(function () {
+	$("#addproject").on('click', function() {
+		window.location.href = "createpage.html";
 	});
 });
