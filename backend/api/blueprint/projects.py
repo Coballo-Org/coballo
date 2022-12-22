@@ -28,7 +28,7 @@ def project(project_id):
 @app_views.route('/users/<owner_id>/projects', strict_slashes=False,
                  methods=['GET'])
 def user_project(owner_id):
-    """This returns a list of projects under a users"""
+    """This returns a list of projects under a user"""
     user_p = []
     for k, obj in storage.all(Project).items():
         if obj.owner_id == owner_id:

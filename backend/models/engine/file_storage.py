@@ -1,77 +1,99 @@
 #!/usr/bin/python3
-"""This handles the storage activities by using a file as the storage means"""
+"""
+Contains the FileStorage class
+"""
 
 import json
+import models
+from models.user import User
+from models.base_model import BaseModel
+from models.project import Project
+from hashlib import md5
+
+classes = {"Project": Project, "BaseModel": BaseModel, "User": User}
 
 
 class FileStorage:
-    """This is the class definition"""
-    __file_path = 'coballo.json'
+    """serializes instances to a JSON file & deserializes back to instances"""
+
+    # string - path to the JSON file
+    __file_path = "file.json"
+    # dictionary - empty but will store all objects by <class name>.id
     __objects = {}
 
     def all(self, cls=None):
-        """This returns a dict of all objects in the storage"""
-        if cls is None:
-            return type(self).__objects
-        else:
+        """returns the dictionary __objects"""
+        if cls is not None:
             new_dict = {}
-            for k, v in type(self).__objects.items():
-                if cls.__name__ in k:
-                    new_dict[k] = v
+            for key, value in self.__objects.items():
+                if cls == value.__class__ or cls == value.__class__.__name__:
+                    new_dict[key] = value
             return new_dict
+        return self.__objects
 
     def new(self, obj):
-        """This adds a new object to the __objects dict"""
-        key = obj.__class__.__name__ + '.' + obj.id
-        type(self).__objects[key] = obj
-
+        """sets in __objects the obj with key <obj class name>.id"""
+        if obj is not None:
+            key = obj.__class__.__name__ + "." + obj.id
+            self.__objects[key] = obj
 
     def save(self):
-        """This saves the object to the storage"""
-        my_dict = {}
-        for k, obj in type(self).__objects.items():
-            my_dict[k] = obj.to_dict()
-        with open(type(self).__file_path, 'w', encoding='utf-8') as f:
-            json.dump(my_dict, f)
-
+        """serializes __objects to the JSON file (path: __file_path)"""
+        json_objects = {}
+        for key in self.__objects:
+            if key == "password":
+                json_objects[key].decode()
+            json_objects[key] = self.__objects[key].to_dict(save_fs=1)
+        with open(self.__file_path, 'w') as f:
+            json.dump(json_objects, f)
 
     def reload(self):
-        """This populate the __objects dict with existing data"""
+        """deserializes the JSON file to __objects"""
         try:
-            with open(type(self).__file_path) as f:
-                content = json.load(f)
-        except Exception:
+            with open(self.__file_path, 'r') as f:
+                jo = json.load(f)
+            for key in jo:
+                self.__objects[key] = classes[jo[key]["__class__"]](**jo[key])
+        except:
             pass
-        else:
-            for k, item in content.items():
-                if 'User' in k.split('.'):
-                    from models.user import User
-                    type(self).__objects[k] = User(**item)
-                elif 'Project' in k.split('.'):
-                    from models.project import Project
-                    type(self).__objects[k] = Project(**item)
-                elif 'Language' in k.split('.'):
-                    from models.language import Language
-                    type(self).__objects[k] = Language(**item)
 
-
-    def delete(self, obj):
-        """This removes an object from the storage"""
-        search_key = obj.__class__.__name__ + '.' + obj.id
-        for key, val in self.__objects.items():
-            if key == search_key:
+    def delete(self, obj=None):
+        """delete obj from __objects if it’s inside"""
+        if obj is not None:
+            key = obj.__class__.__name__ + '.' + obj.id
+            if key in self.__objects:
                 del self.__objects[key]
-                self.save()
-                return
-
-
-    def get(self, cls, ids):
-        """This returns an object from storage"""
-        search_key = cls + '.' + ids
-        for key, val in self.all().items():
-            if key == search_key:
-                return val
-
 
     def close(self):
+        """call reload() method for deserializing the JSON file to objects"""
         self.reload()
+
+    def get(self, cls, id):
+        """
+        Returns the object based on the class name and its ID, or
+        None if not found
+        """
+        if cls not in classes.values():
+            return None
+
+        all_cls = models.storage.all(cls)
+        for value in all_cls.values():
+            if (value.id == id):
+                return value
+
+        return None
+
+    def count(self, cls=None):
+        """
+        count the number of objects in storage
+        """
+        all_class = classes.values()
+
+        if not cls:
+            count = 0
+            for clas in all_class:
+                count += len(models.storage.all(clas).values())
+        else:
+            count = len(models.storage.all(cls).values())
+
+        return count

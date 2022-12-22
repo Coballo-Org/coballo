@@ -1,8 +1,7 @@
 #!/usr/bin/node
 
-var presentUser = ""
-// Create new user (sign up)
 
+// Create new user (sign up)
 $(function (){
 	var $name = $('#fname');
 	var $lname = $('#lname');
@@ -24,8 +23,13 @@ $(function (){
 			contentType: 'application/json',
 			dataType: 'json',
 			success: function(newUser) {
+				presentUser = {
+					"name": newUser.first_name,
+					"id": newUser.id,
+					"email": newUser.email,
+				}
 				alert(newUser.first_name + " account has been created successfully");
-				var presentUser = newUser;
+				window.localStorage.setItem('presentUser', JSON.stringify(presentUser));
 				window.location = "../static/myprojects.html"
 			},
 			error: function() {
@@ -54,8 +58,13 @@ $(function () {
 			contentType: 'application/json',
 			dataType: 'json',
 			success: function(oldUser) {
-				var presentUser = oldUser;
-				alert("You have been successfully logged in");
+				var presentUser = {
+					"name": oldUser.first_name,
+					"id": oldUser.id,
+					"email": oldUser.email,
+				}
+				window.localStorage.setItem('presentUser', JSON.stringify(presentUser));
+				alert("You have successfully logged in");
 				window.location = "../static/myprojects.html";
 			},
 			error: function() {
