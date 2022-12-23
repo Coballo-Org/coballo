@@ -22,32 +22,33 @@
         </nav>
         <nav class="signup-nav">
             <ul class="nav-list-two">
-                <li><button>LOG OUT</button></li>
+                <li><button id="logout">LOG OUT</button></li>
             </ul>
         </nav>
     </header>
     <main>
         <h1>SEARCH FOR AVAILABLE PROJECTS</h1>
-        <form>
-            <h4>Search by Github Username</h4>
-            <input type="text" name="username" class="username" id="owner-name" placeholder="Github Username">
-            <button type="submit">Search</button>
-        </form>
-        <form action="/">
+        <div class="form">
+            <h4>Search by Owner Name</h4>
+            <input type="text" name="username" class="username" id="owner-name" placeholder="Owner name">
+            <button type="submit" id="name-search">Search</button>
+        </div>
+        <div class="form">
             <h4>Search by Github Repository Name</h4>
             <input type="text" name="reponame" class="username" placeholder="Github Username and Repository Name">
             <button type="submit">Search</button>
-        </form>
-        <form action="/">
+        </div>
+        <div class="form">
             <h4>Search by Programming Language</h4>
             <input type="text" name="language" class="username" placeholder="Enter Preferred Language">
             <button type="submit">Search</button>
-        </form>
-        <form action="/">
+        </div>
+        <div class="form">
             <h4>Search Random Available Project</h4>
             <input type="text" name="random" class="username" placeholder="Enter any random phrase">
             <button type="submit">Search</button>
-        </form>
+        </div>
+	<div id="project-list"></div>
     </main>
 
     <footer>
@@ -66,6 +67,6 @@
         </div>
     </footer>
     <SCRIPT src="https://code.jquery.com/jquery-3.2.1.min.js"></SCRIPT>
-    <script src={{ url_for('static', filename="scripts/avail_project.js") }}></script>
+    <script src="scripts/avail_projects.js"></script>
 </body>
 </html>

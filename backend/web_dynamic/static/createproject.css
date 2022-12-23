@@ -77,6 +77,22 @@ button:hover{
     background-color: white;
     color: blueviolet;
 }
+main input{
+    width: 50%;
+    height: 40px;
+    padding-left: 2%;
+    border-radius: 8px;
+    border: 1px solid gray;
+    font-size: 16px;
+}
+main textarea{
+	width: 50%;
+	height: 120px;
+	padding: 1%;
+	border-radius: 8px;
+	border: 1px solid gray;
+	font-size: 16px;
+}
 .head {
 	text-align: center;
 }

@@ -14,7 +14,8 @@ def all_projects():
     for k, obj in storage.all(Project).items():
         all_pr.append(obj.to_dict())
 
-    return jsonify(all_pr)
+    sorted_list = sorted(all_pr, key=lambda d: d['title'])
+    return jsonify(sorted_list)
 
 @app_views.route('/projects/<project_id>', strict_slashes=False, methods=['GET'])
 def project(project_id):
@@ -36,7 +37,8 @@ def user_project(owner_id):
 
     if len(user_p) == 0:
         abort(404, "No project found")
-    return jsonify(user_p)
+    sorted_list = sorted(user_p, key=lambda d: d['title'])
+    return jsonify(sorted_list)
 
 
 @app_views.route('/projects', strict_slashes=False, methods=['POST'])
