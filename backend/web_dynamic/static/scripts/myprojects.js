@@ -13,7 +13,7 @@ $(function () {
 	});
 });
 
-// populate the project repo names
+// populate the page with the project details
 $(function () {
 	repo = document.getElementById("project-repos");
 	$.ajax({
@@ -25,7 +25,14 @@ $(function () {
 		success: function (projects) {
 			$.each(projects, function (index, item) {
 				$("#project-repos").append('<li>' + item.title + '</li>')
-				$("#repo-info").append("<br><h1>Project Title:<span>" + item.title + "</span></h1><h6><span>Description:</span>" + item.description + "</h6><p>README:</p><i>" + item.description + "</i><br><br><button>Go to Code</button><br><br><br>")
+				$("#repo-info").append("<br><h1>Project Title:<span>" + item.title + "</span></h1><h6><span>Description:</span>" + item.description + "</h6><p>README:</p><i>" + item.readme + "</i><br><br><button class='go-to-code'>Go to Code</button><button class='edit-project' id='edit-proj-" + item.id + "'>Edit Project</button><br><br><br>")
+				$(function () {
+					$("#edit-proj-" + item.id).on('click', function () {
+						window.localStorage.removeItem('editId');
+						window.localStorage.setItem('editId', JSON.stringify(item.id));
+						window.location.href = "editpage.html";
+					});
+				});
 			});
 		},
 		error: function () {
