@@ -14,20 +14,23 @@
            <a href="index.html"> <i class="fa-solid fa-minimize"></i></a>
            <a href="index.html"><h1>Coballo</h1></a>
         </nav>
-        <nav class="home-nav">
-            <ul class="nav-list-one">
+        <nav id="main-nav">
+            <ul id="nav-list-one">
                 <li> <a href="avail-projects.html"> AVAILABLE PROJECTS</a></li>
                 <li><a href="myprojects.html">MY PROJECTS</a></li>
             </ul>
-        </nav>
-        <nav class="signup-nav">
-            <ul class="nav-list-two">
+            <ul id="nav-list-two">
                 <li><button>SIGN UP</button></li>
                 <li><button>LOGIN</button></li>
             </ul>
         </nav>
+        <i class="fa-solid fa-solids fa-bars" id="nav-menu" onclick="displayMainNav()"></i>
     </header>
-    <main>
+    <ul id="nav-list-hide">
+        <li> <a href="avail-projects.html"> AVAILABLE PROJECTS</a></li>
+        <li><a href="myprojects.html">MY PROJECTS</a></li>
+    </ul>
+    <main id="main">
         <section class="first-section">
             <div class="text-side">
                 <h1>Welcome to Coballo <span><br>Let's Get You Started!</span></h1>
@@ -55,6 +58,7 @@
                     <input type="email" name="email" class="email" required placeholder="myname@example.com">
                     <input type="password" name="pword" class="pword" required placeholder="**************">
                     <i>Use at least one letter, one number and seven characters</i>
+                    <p id="sign-up-message"></p>
                     <button type="submit">Sign Up for Coballo</button>
                     <i>Already have an accout? Login <span class="login-span" onclick="showLogin()"> Here</span></i>
                 </form>
@@ -65,7 +69,7 @@
                     <i>or use your email address.</i> 
                     <input type="email" name="email" class="email" required placeholder="myname@example.com">
                     <input type="password" name="pword" class="pword" required placeholder="**************">
-                    
+                    <p id="login-message"></p>
                     <button type="submit">Login</button>
                     <i>Don't have an accout? Sign Up<span class="signup-span" onclick="showSignup()"> Here</span></i>
                 </form>
@@ -76,32 +80,39 @@
                 <aside>
                     
                     <h2> <i class="fa-solid fa-address-card"></i> ABOUT US</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maiores 
-                        fugiat exercitationem omnis unde modi! Ipsa laboriosam unde tempore accusantium quasi
-                         reiciendis iste quam officia magni repudiandae, sequi minus quos?</p>
+                    <!-- About Us section revamped -->
+                    <p>Coballo-Org is a team made up of Dennis, who is a backend developer, Nnaemeka, who is a frontend developer and Benjamin who is a mobile developer. Dennis set up majority of the 
+                        backend logic of this platform. Joseph designed the beautiful UI. Benjamin set up the storage engine for the project and will follow up with creating the mobile version of the website.
+                    </p>
                 </aside>
                 <aside>
                     
                     <h2> <i class="fa-solid fa-address-book"></i> CONTACT US</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maiores 
-                        fugiat exercitationem omnis unde modi! Ipsa laboriosam unde tempore accusantium quasi
-                         reiciendis iste quam officia magni repudiandae, sequi minus quos?</p>
+                    <!-- Contact Us section revamped -->
+                    <b>Follow us on social media: </b>
+                        <ul>
+                            <li><a href="https://github.com/Dennisco12"> https://github.com/Dennisco12</a></li>
+                            <li><a href="https://github/nnaemekaxi"> https://github/nnaemekaxi</a></li>
+                            <li><a href="https://github/benjamineruvieru"> https://github/benjamineruvieru</a></li>
+                            <li><a href="https://linkedin.com/in/dennis-akinwojowo"> https://linkedin.com/in/dennis-akinwojowo</a></li>
+                            <li><a href="https://github/linkedin.com/in/nnaemeka11"> https://github/linkedin.com/in/nnaemeka11</a></li>
+                        </ul>
+
                 </aside>
             </div>
             <div class="second-div"> 
                 <aside>
                     
                     <h2> <i class="fa-solid fa-ethernet"></i> PRODUCTS AND SERVICES</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maiores 
-                        fugiat exercitationem omnis unde modi! Ipsa laboriosam unde tempore accusantium quasi
-                         reiciendis iste quam officia magni repudiandae, sequi minus quos?</p>
+                    <p>Coballo is a platform for developers to create projects and find other developers who are interested in collaborating or contributing to the project.
+                        User can also list their abandoned developer projects and have other developers pick them up and continue working on them. Users can find available projects and decide to collaborate with the owners on completing them.
+                        Users who are searching for partners to complete their projects can also list their projects and it will be available for others to view.
+                    </p>
                 </aside>
                 <aside>
                     
                         <h2> <i class="fa-solid fa-tree"></i> START A FREE TRIAL</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam maiores 
-                            fugiat exercitationem omnis unde modi! Ipsa laboriosam unde tempore accusantium quasi
-                             reiciendis iste quam officia magni repudiandae, sequi minus quos?</p>
+                        <p>You can set up an free account by signing up to Coballo-Org</p>
                 </aside>
             </div>
         </section>
@@ -129,6 +140,8 @@
     let signup = document.getElementById("signup");
     let loginSpan = document.getElementsByClassName("login-span");
     let signupSpan = document.getElementsByClassName("signup-span");
+    let navHide = document.getElementById("nav-list-hide");
+    let main = document.getElementById("main")
 
     signup.style.display = "none";
 
@@ -140,6 +153,26 @@
         login.style.display = "none";
         signup.style.display = "flex";
        
+    }
+
+    function displayMainNav(){
+        
+        if (navHide.style.display == "flex"){
+            navHide.style.display = "none"
+            main.style.display = "block"
+        } else {
+            navHide.style.cssText = `
+                        display: flex; 
+                        flex-direction: column; 
+                        gap: 30px; 
+                        margin-top: 70px; 
+                        height: 70vh;
+                        padding-left:5%; 
+                        background-color: white;
+                        color:blueviolet`
+            main.style.display = "none"
+
+        }
     }
 
       
