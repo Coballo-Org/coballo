@@ -71,7 +71,7 @@ body{
     color: blueviolet;
 }main{
     margin-top: 64px;
-    margin-top: 32px;
+    margin-bottom: 32px;
     min-height: 600px;
     padding: 0 5%;
     display: flex;
@@ -101,6 +101,25 @@ main form button:hover{
     border: 1px solid blueviolet;
     background-color: white;
     color: blueviolet;
+}
+#preferred-languages{
+    font-size: 18px;
+}
+#preferred-languages h4{
+    margin-bottom: 15px;
+}
+#preferred-languages p{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+#preferred-languages input{
+    width: 20px;
+    height: 20px;
+}
+#preferred-languages button{
+    margin-top: 15px;
 }
 footer{
     padding: 2% 5%;
