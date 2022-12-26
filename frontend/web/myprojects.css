@@ -29,35 +29,47 @@ body{
     gap: 10px;
     width: 20%;
 }
-
 .logo-nav i{
     font-size: 24px;
 }
-
-.nav-list-one{
+#main-nav{
+    width: 80%;
     display: flex;
-    width: 110%;
-    gap: 5%;
+    justify-content: space-evenly;
 }
-.nav-list-one a:hover{
-    border-bottom: 2px white solid;
-}
-.nav-list-two{
-    width: 110%;
+#nav-list-one{
+    width: 60%;
     display: flex;
     gap: 10%;
+    margin-left: 10%;
 }
-.nav-list-two button{
+#nav-list-one a:hover{
+    border-bottom: 2px white solid;
+}
+#nav-list-two{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+}
+#nav-list-two button{
     height: 30px;
     width: 110%;
     background-color: white;
     border: none;
     border-radius: 4px;
 }
-.nav-list-two button:hover{
+#nav-list-two button:hover{
     background-color: aliceblue;
 }
-main{
+#nav-menu, #nav-list-hide{
+    display: none;
+}
+#nav-list-hide a{
+    text-decoration: none;
+    color: blueviolet;
+}main{
     min-height: 500px;
     display: flex;
     margin: 64px 5% 32px 5%;
@@ -162,5 +174,28 @@ footer{
     .commentsection{
         width: 90%;
         border-top: 5px solid blueviolet;
+    }
+}
+@media screen and (max-width:650px) {
+    #main-nav{
+        display: none;
+    }
+    #nav-menu{
+        display: flex;
+    }
+    .fa-bars{
+        font-size: 36px;
+    }
+    .display{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:350px) {
+    h1{
+        font-size: 16px;
+    }
+    p{
+        font-size: 14px;
     }
 }

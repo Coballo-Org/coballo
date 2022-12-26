@@ -14,39 +14,67 @@
            <a href="index.html"> <i class="fa-solid fa-minimize"></i></a>
            <a href="index.html"><h1>Coballo</h1></a>
         </nav>
-        <nav class="home-nav">
-            <ul class="nav-list-one">
+        <nav id="main-nav">
+            <ul id="nav-list-one">
                 <li> <a href="avail-projects.html"> AVAILABLE PROJECTS</a></li>
                 <li><a href="myprojects.html">MY PROJECTS</a></li>
             </ul>
-        </nav>
-        <nav class="signup-nav">
-            <ul class="nav-list-two">
-                <li><button>LOG OUT</button></li>
+            <ul id="nav-list-two">
+                <li><button>LOGOUT</button></li>
             </ul>
         </nav>
+        <i class="fa-solid fa-solids fa-bars" id="nav-menu" onclick="displayMainNav()"></i>
     </header>
-    <main>
+    <ul id="nav-list-hide">
+        <li> <a href="avail-projects.html"> AVAILABLE PROJECTS</a></li>
+        <li><a href="myprojects.html">MY PROJECTS</a></li>
+    </ul>
+    <main id="main">
+    
         <h1>SEARCH FOR AVAILABLE REPOSITORIES</h1>
         <form action="/">
             <h4>Search by Github Username</h4>
             <input type="text" name="username" class="username" placeholder="Github Username">
             <button type="submit">Search</button>
+             <!-- for displaying success/failure message -->
+            <p id="search-message-A"></p>
         </form>
         <form action="/">
             <h4>Search by Github Repository Name</h4>
             <input type="text" name="reponame" class="username" placeholder="Github Username and Repository Name">
             <button type="submit">Search</button>
+             <!-- for displaying success/failure message -->
+            <p id="search-message-B"></p>
         </form>
-        <form action="/">
-            <h4>Search by Programming Language</h4>
-            <input type="text" name="language" class="username" placeholder="Enter Preferred Language">
-            <button type="submit">Search</button>
+        <form action="/" id="preferred-languages">
+            <h4>Select Your Preferred Programming Languages</h4>
+            <p><label for="html">HTML</label> <input type="checkbox" name="HTML" id="html"></p>
+            <p><label for="css">CSS</label>  <input type="checkbox" name="CSS" id="CSS"></p>
+            <p><label for="javascript">JAVASCRIPT</label> <input type="checkbox" name="JAVASCRIPT" id="JAVASCRIPT"></p>
+            <p><label for="reactjs">REACTJS</label> <input type="checkbox" name="REACTJS" id="REACTJS"></p>
+            <p><label for="nodejs">NODEJS</label> <input type="checkbox" name="NODEJS" id="NODEJS"></p>
+            <p><label for="python">PYTHON</label> <input type="checkbox" name="PYTHON" id="PYTHON"></p>
+            <p><label for="django">DJANGO</label> <input type="checkbox" name="DJANGO" id="DJANGO"></p>
+            <p><label for="flask">FLASK</label> <input type="checkbox" name="FLASK" id="FLASK"></p>
+            <p><label for="php">PHP</label> <input type="checkbox" name="PHP" id="PHP"></p>
+            <p><label for="larravel">LARRAVEL</label> <input type="checkbox" name="LARRAVEL" id="LARRAVEL"></p>
+            <p><label for="golang">GO LANG </label><input type="checkbox" name="GO LANG" id="GO LANG"></p>
+            <p><label for="c">C</label> <input type="checkbox" name="C" id="C"></p>
+            <p><label for="c++">C++</label> <input type="checkbox" name="C++" id="C++"></p>
+            <p><label for="c#">C# </label><input type="checkbox" name="C#" id="C#"></p>
+            <p><label for="java">JAVA</label> <input type="checkbox" name="JAVA" id="JAVA"></p>
+            <p><label for="vuejs">VUEJS</label> <input type="checkbox" name="VUEJS" id="VUEJS"></p>
+            <p><label for="angularjs">ANGULARJS</label> <input type="checkbox" name="ANGULARJS" id="ANGULARJS"></p>
+            <button type="submit">Submit</button>
+             <!-- for displaying success/failure message -->
+            <p id="search-message-C"></p>
         </form>
         <form action="/">
             <h4>Search Random Available Project</h4>
             <input type="text" name="random" class="username" placeholder="Enter any random phrase">
             <button type="submit">Search</button>
+            <!-- for displaying success/failure message -->
+            <p id="search-message-D"></p>
         </form>
     </main>
 
@@ -65,5 +93,49 @@
             Copyright &copy; DenBenFan, 2022.
         </div>
     </footer>
+    <script>
+    
+        let login = document.getElementById("login");
+        let signup = document.getElementById("signup");
+        let loginSpan = document.getElementsByClassName("login-span");
+        let signupSpan = document.getElementsByClassName("signup-span");
+        let navHide = document.getElementById("nav-list-hide");
+        let main = document.getElementById("main")
+    
+        signup.style.display = "none";
+    
+        function showLogin (){
+           signup.style.display = "none";
+           login.style.display = "flex";
+        }
+        function showSignup(){
+            login.style.display = "none";
+            signup.style.display = "flex";
+           
+        }
+    
+        function displayMainNav(){
+            
+            if (navHide.style.display == "flex"){
+                navHide.style.display = "none"
+                main.style.display = "block"
+            } else {
+                navHide.style.cssText = `
+                            display: flex; 
+                            flex-direction: column; 
+                            gap: 30px; 
+                            margin-top: 70px; 
+                            height: 70vh;
+                            padding-left:5%; 
+                            background-color: white;
+                            color:blueviolet`
+                main.style.display = "none"
+    
+            }
+        }
+    
+          
+    
+    </script>
 </body>
 </html>
