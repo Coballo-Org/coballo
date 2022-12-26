@@ -29,37 +29,50 @@ body{
     gap: 10px;
     width: 20%;
 }
-
 .logo-nav i{
     font-size: 24px;
 }
-
-.nav-list-one{
+#main-nav{
+    width: 80%;
     display: flex;
-    width: 110%;
-    gap: 5%;
+    justify-content: space-evenly;
 }
-.nav-list-one a:hover{
-    border-bottom: 2px white solid;
-}
-.nav-list-two{
-    width: 110%;
+#nav-list-one{
+    width: 60%;
     display: flex;
     gap: 10%;
+    margin-left: 10%;
 }
-.nav-list-two button{
+#nav-list-one a:hover{
+    border-bottom: 2px white solid;
+}
+#nav-list-two{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+}
+#nav-list-two button{
     height: 30px;
     width: 110%;
     background-color: white;
     border: none;
     border-radius: 4px;
 }
-.nav-list-two button:hover{
+#nav-list-two button:hover{
     background-color: aliceblue;
 }
+#nav-menu, #nav-list-hide{
+    display: none;
+}
+#nav-list-hide a{
+    text-decoration: none;
+    color: blueviolet;
+}
 .first-section{
-    padding: 0 0 0 5%;
-    margin-top: 32px;
+    width: 90%;
+    margin: 32px auto 0 auto;
     display: flex;
     gap: 5%;
 }
@@ -83,7 +96,7 @@ body{
     border: none;
     border-radius: 8px;
 }
-.text-side button:hover, form button:hover{
+.text-side button:hover, .form button:hover{
     border: 1px solid blueviolet;
     background-color: white;
     color: blueviolet;
@@ -138,15 +151,19 @@ body{
     color: blueviolet;
 }
 .second-section{
-    padding: 0 5%;
-    margin-top: 48px;
+    width: 90%;
+    margin: 48px auto 0 auto;
     display: flex;
     flex-direction: column;
 }
 .first-div, .second-div{
     display: flex;
+    justify-content: space-between;
     line-height: 32px;
     margin-bottom: 32px;
+}
+.first-div aside, .second-div aside{
+    width: 48%;
 }
 footer{
     padding: 2% 5%;
@@ -161,6 +178,7 @@ footer{
     margin-top: 16px;
     text-align: center;
 }
+
 @media screen and (max-width: 850px) {
     .site-header{
         font-size: 12px;
@@ -169,7 +187,36 @@ footer{
         flex-direction: column;
         gap: 16px;
     }
+    .text-side button{
+        width: 100%;
+    }
     .first-div, .second-div{
         flex-direction: column;
+    }
+    .first-div aside, .second-div aside{
+        width: 100%;
+    }
+}
+@media screen and (max-width:650px) {
+    #main-nav{
+        display: none;
+    }
+    #nav-menu{
+        display: flex;
+    }
+    .fa-bars{
+        font-size: 36px;
+    }
+    .display{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:350px) {
+    h1{
+        font-size: 16px;
+    }
+    p{
+        font-size: 14px;
     }
 }

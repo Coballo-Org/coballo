@@ -25,7 +25,7 @@ $(function () {
 			dataType: 'json',
 			contentType: 'application/json',
 			success: function(proj) {
-				alert(proj.title + 'has been created successfully');
+				alert(proj.title + ' has been created successfully');
 				window.location.href = 'myprojects.html';
 			},
 			error: function() {

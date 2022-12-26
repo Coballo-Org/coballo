@@ -6,3 +6,4 @@ app_views = Blueprint('app_views', __name__, url_prefix='/coballo')
 
 from api.blueprint.projects import *
 from api.blueprint.users import *
+from api.blueprint.languages import *

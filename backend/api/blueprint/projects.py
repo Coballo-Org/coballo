@@ -35,10 +35,23 @@ def user_project(owner_id):
         if obj.owner_id == owner_id:
             user_p.append(obj.to_dict())
 
-    if len(user_p) == 0:
-        abort(404, "No project found")
     sorted_list = sorted(user_p, key=lambda d: d['title'])
     return jsonify(sorted_list)
+
+
+@app_views.route('/projects/title/<proj_title>', strict_slashes=False,
+                methods=['GET'])
+def get_project_by_title(proj_title):
+    """This search storage for a string and returns a list of projects
+    whose title matches the string"""
+    proj_list = []
+    for key, obj in storage.all(Project).items():
+        if proj_title.lower() in obj.title.lower():
+            proj_list.append(obj.to_dict())
+    if len(proj_list) == 0:
+        abort(404, "No project found")
+    sorted_list = sorted(proj_list, key=lambda d: d['title'])
+    return jsonify(sorted_list), 200
 
 
 @app_views.route('/projects', strict_slashes=False, methods=['POST'])
@@ -82,4 +95,5 @@ def delete_project(project_id):
     for key, obj in storage.all(Project).items():
         if key == search_key:
             storage.delete(obj)
-            return {}
+            storage.save()
+            return

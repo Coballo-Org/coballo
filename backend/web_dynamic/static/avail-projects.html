@@ -12,7 +12,7 @@
     <header class="site-header">
         <nav class="logo-nav">
            <a href="index.html"> <i class="fa-solid fa-minimize"></i></a>
-           <a href="index.html"><h1>Coballo</h1></a>
+           <a href="../templates/index.html"><h1>Coballo</h1></a>
         </nav>
         <nav class="home-nav">
             <ul class="nav-list-one">
@@ -34,13 +34,17 @@
             <button type="submit" id="name-search">Search</button>
         </div>
         <div class="form">
-            <h4>Search by Github Repository Name</h4>
-            <input type="text" name="reponame" class="username" placeholder="Github Username and Repository Name">
-            <button type="submit">Search</button>
+            <h4>Search by Project Title</h4>
+            <input type="text" name="reponame" class="username" id="project-title" placeholder="Project Title">
+            <button type="submit" id="title-search">Search</button>
         </div>
         <div class="form">
             <h4>Search by Programming Language</h4>
-            <input type="text" name="language" class="username" placeholder="Enter Preferred Language">
+	    <div id="list1" class="dropdown-check-list" tabindex="100">
+		    <span class="anchor" id="lang-anchor">Select Languages</span>
+		    <ul class="items">
+		    </ul>
+	    </div>
             <button type="submit">Search</button>
         </div>
         <div class="form">

@@ -66,6 +66,76 @@ main{
     flex-direction: column;
     gap: 64px;
 }
+.dropdown-check-list {
+  display: inline-block;
+}
+
+.dropdown-check-list .anchor {
+	position: relative;
+	cursor: pointer;
+      	display: inline-block;
+      	padding-left: 2%;
+    	width: 50%;
+    	height: 40px;
+    	border-radius: 8px;
+    	border: 1px solid gray;
+	font-size: 16px;
+}
+#lang-anchor {
+	width: 50%;
+	height: 40px;
+	border-radius: 8px;
+	border: 1px solid gray;
+	font-size: 16px;
+}
+.dropdown-check-list .anchor:after {
+  position: absolute;
+  content: "";
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  padding-left: 2%;
+  right: 10px;
+  top: 20%;
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+
+.dropdown-check-list .anchor:active:after {
+  right: 8px;
+  top: 21%;
+}
+
+.dropdown-check-list ul.items {
+  padding: 2px;
+  display: none;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.dropdown-check-list ul.items li {
+  list-style: none;
+}
+
+.dropdown-check-list.visible .anchor {
+  color: #0094ff;
+}
+
+.dropdown-check-list.visible .items {
+  display: block;
+}
+
+span.anchor{
+	width: 50%;
+	height: 40px;
+	padding-left: 2%;
+	border-radius: 8px;
+	border: 1px solid gray;
+	font-size: 16px;
+}
 main .form input{
     width: 50%;
     height: 40px;

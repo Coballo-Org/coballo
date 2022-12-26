@@ -16,7 +16,7 @@ $(function () {
 			$("#link").val(project.link);
 		},
 		error: function (){
-			alert("Could not update this project, please try again");
+			alert("Could not load this project, please try again");
 		},
 	});
 	$(function () {
@@ -28,5 +28,28 @@ $(function () {
 			var $link = $("#link");
 
 			const project = {
-				"title": 
+				"title": $title.val(),
+				"language": $language.val(),
+				"description": $description.val(),
+				"readme": $readme.val(),
+				"link": $link.val(),
+			};
+
+			$.ajax({
+				type: 'PUT',
+				url: 'http://100.25.165.74:5005/coballo/projects/' + projectId,
+				data: JSON.stringify(project),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: function () {
+					alert("Your project has been updated successfully");
+					window.location.href = 'myprojects.html';
+				},
+				error: function () {
+					alert("Your project could not be updated, please try again");
+				},
+			});
+			window.location.href = 'myprojects.html';
+		});
+	});
 });

@@ -25,7 +25,12 @@ $(function () {
 		success: function (projects) {
 			$.each(projects, function (index, item) {
 				$("#project-repos").append('<li>' + item.title + '</li>')
-				$("#repo-info").append("<br><h1>Project Title:<span>" + item.title + "</span></h1><h6><span>Description:</span>" + item.description + "</h6><p>README:</p><i>" + item.readme + "</i><br><br><button class='go-to-code'>Go to Code</button><button class='edit-project' id='edit-proj-" + item.id + "'>Edit Project</button><br><br><br>")
+				$("#repo-info").append("<br><h1>Project Title:<span>" + item.title + "</span></h1><h6><span>Description:</span>" + item.description + "</h6><h6><span>Languages:</span>" + item.language + "</h6><p>README:</p><i>" + item.readme + "</i><br><br><button class='go-to-co' id='go-to-code-" + item.id + "'>Go to Code</button><button class='edit-project' id='edit-proj-" + item.id + "'>Edit Project</button><button class='delete-project' id='delete-proj-" + item.id + "'> Delete Project</button><br><br><br>")
+				$(function () {
+					$("#go-to-code-" + item.id).on('click', function () {
+						window.location = item.link;
+					});
+				});
 				$(function () {
 					$("#edit-proj-" + item.id).on('click', function () {
 						window.localStorage.removeItem('editId');
@@ -33,10 +38,29 @@ $(function () {
 						window.location.href = "editpage.html";
 					});
 				});
+				$(function () {
+					$("#delete-proj-" + item.id).on('click', function () {
+						$.ajax({
+							type: 'DELETE',
+							url: 'http://100.25.165.74:5005/coballo/projects/' + item.id,
+							data: {},
+							contentType: 'application/json',
+							dataType: 'json',
+							success: function () {
+								alert("Your project has been deleted successfully");
+								location.reload(true);
+							},
+							error: function () {
+								alert("Your project has been deleted successfully");
+								location.reload(true);
+							},
+						});
+					});
+				});
 			});
 		},
 		error: function () {
-			alert("The browser could not access this user's projects");
+			alert("Welcome, Do you want to create your first project now?");
 		},
 	});
 });
