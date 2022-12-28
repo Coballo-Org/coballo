@@ -33,13 +33,13 @@ $(function () {
 			});
 		},
 		error: function () {
-			alert("The available projects can not be loaded at this time");
+			$('#project-list').html("<p>Error: Projects could not be loaded, please reload the page again</p>")
 		},
 	});
 });
 
 
-// search by project name
+// search by owner name
 $(function () {
 	var $search_key = $("#owner-name");
 
@@ -66,13 +66,13 @@ $(function () {
 							});
 						},
 						error: function() {
-							alert("This user has no projects");
+							$("#error-msg-A").html("This user has no projects!");
 						},
 					});
 				});
 			},
 			error: function() {
-				alert("No user matched this search");
+				$("#error-msg-A").html("No user matched this search!");
 			},
 		});
 	});
@@ -83,9 +83,12 @@ $(function () {
 	var $searchTitle = $("#project-name");
 
 	$("#title-search").on('click', function () {
+		var key_dict = {
+			"title": $searchTitle.val(),
+		};
 		$.ajax({
 			type: 'GET',
-			url: 'http://100.25.165.74:5005/coballo/projects/title/' + $searchTitle.val(),
+			url: 'http://100.25.165.74:5005/coballo/projects/title/' + key_dict.title,
 			contentType: 'application/json',
 			dataType: 'json',
 			success: function (projects) {
@@ -100,29 +103,21 @@ $(function () {
 							$('#project-list').append('<h1>' + project.title + '</h1><p><em>created by: ' + projUser.first_name + ' ' + projUser.last_name + '</em></p><hr><p>' + project.description + '</p><br><br>');
 						},
 						error: function () {
-							alert("No user found for this project");
+							("#error-msg-B").html("No user found for this project!");
 						},
 					});
 				});
 			},
 			error: function() {
-				alert("No project title matched this search");
+				$("#error-msg-B").html("No project title matched this search!");
 			},
 		});
 	});
 });
- 
-// Search by language
+
+var langList = [];
+// Load all languages for dropdown box
 $(function () {
-	var checkList = document.getElementById('list1');
-	checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
-		if (checkList.classList.contains('visible'))
-			checkList.classList.remove('visible');
-		else
-			checkList.classList.add('visible');
-	}
-
-
 	$.ajax({
 		type: 'GET',
 		url: 'http://100.25.165.74:5005/coballo/languages',
@@ -131,8 +126,91 @@ $(function () {
 		dataType: 'json',
 		success: function(languages) {
 			$.each(languages, function(index, language) {
-				$(".items").append(`<li><input type="checkbox" />` + language.name + `</li>`)
+				$("#checkbox").append('<p id="checkbox"><label for="' + language.name + '">' + language.name + '</label> <input type="checkbox" name="' + language.name + '" id="' + language.id + '"></p>');
+				$("#" + language.id).on('click', function() {
+					if (langList.includes(language.name)) {
+						for (var i = 0; i < langList.length; i++) {
+							if (langList[i] === language.name) {
+								langList.splice(i, 1);
+							}
+						}
+					} else {
+						langList.push(language.name)
+					};
+					$("#dropLabel").val(langList.join(', '));
+				});
 			});
 		},
 	});
 });
+
+var dict = {};
+// search by language
+$(function () {
+	$("#lang-search").on('click', function(){
+		$.ajax({
+			type: "GET",
+			url: "http://100.25.165.74:5005/coballo/projects",
+			contentType: 'application/json',
+			dataType: 'json',
+			success: function(projects) {
+				$.each(projects, function(index, project) {
+					dict[project.id] = 0;
+					$.each(project.language, function(index2, lang) {
+						$.each(langList, function(index3, item) {
+							if (lang === item) {
+								dict[project.id] = dict[project.id] + 1;
+							}
+						});
+					});
+				});
+			},
+			error: function(){
+				alert("Could not load the search results, Please try again later");
+			},
+		});
+
+		for (let k in dict) {
+			if (dict[k] === 0) {
+				delete dict[k];
+			}
+		};
+		// sort the dictionary dict by values
+		var items = Object.keys(dict).map(function(key) {
+			return [key, dict[key]];
+		});
+
+		items.sort(function(first, second) {
+			return second[1] - first[1];
+		});
+		console.log(items);
+
+		// Load the corresponding projects
+		$.each(items, function(index, item) {
+			$.ajax({
+				type: 'GET',
+				url: 'http://100.25.165.74:5005/coballo/projects/' + items[0].slice(1, -2),
+				data: {},
+				contenttype: 'application/json',
+				dataType: 'json',
+				success: function(project) {
+					$('#project-list').html("");
+					console.log(project)
+					$.each(project, function(index, proj) {
+						$.ajax({
+							type: 'GET',
+							url: 'http://100.25.165.74:5005/coballo/users/' + proj.owner_id,
+							data: {},
+							contentType: 'application/json',
+							dataType: 'json',
+							success: function (users) {
+								$('#project-list').append('<h1>' + proj.title + '</h1><p><em>created by: ' + users.first_name + ' ' + users.last_name + '</em></p><hr><p>' + proj.description + '</p><br><br>');
+							},
+						});
+					});
+				},
+			});
+		});
+	});
+});
+

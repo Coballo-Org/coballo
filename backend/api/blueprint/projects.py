@@ -96,4 +96,4 @@ def delete_project(project_id):
         if key == search_key:
             storage.delete(obj)
             storage.save()
-            return
+            return {}, 200

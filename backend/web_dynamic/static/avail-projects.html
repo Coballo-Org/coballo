@@ -12,7 +12,7 @@
     <header class="site-header">
         <nav class="logo-nav">
            <a href="index.html"> <i class="fa-solid fa-minimize"></i></a>
-           <a href="../templates/index.html"><h1>Coballo</h1></a>
+           <a href="index.html"><h1>Coballo</h1></a>
         </nav>
         <nav class="home-nav">
             <ul class="nav-list-one">
@@ -32,25 +32,20 @@
             <h4>Search by Owner Name</h4>
             <input type="text" name="username" class="username" id="owner-name" placeholder="Owner name">
             <button type="submit" id="name-search">Search</button>
+	    <p class="errors" id="error-msg-A"></p>
         </div>
         <div class="form">
             <h4>Search by Project Title</h4>
-            <input type="text" name="reponame" class="username" id="project-title" placeholder="Project Title">
+            <input type="text" name="reponame" class="username" id="project-name" placeholder="Project Title">
             <button type="submit" id="title-search">Search</button>
+	    <p class="errors" id="error-msg-B"></p>
         </div>
-        <div class="form">
-            <h4>Search by Programming Language</h4>
-	    <div id="list1" class="dropdown-check-list" tabindex="100">
-		    <span class="anchor" id="lang-anchor">Select Languages</span>
-		    <ul class="items">
-		    </ul>
-	    </div>
-            <button type="submit">Search</button>
-        </div>
-        <div class="form">
-            <h4>Search Random Available Project</h4>
-            <input type="text" name="random" class="username" placeholder="Enter any random phrase">
-            <button type="submit">Search</button>
+        <div class="form" id="preferred-languages">
+		<h4>Search by Programming Language</h4>
+		<input type="text" class="username" id="dropLabel" onclick="showDropDown()" placeholder="Select Language">
+	    <div id="checkbox"></div>
+            <button type="submit" id="lang-search">Search</button>
+	    <p class="errors" id="error-msg-C"></p>
         </div>
 	<div id="project-list"></div>
     </main>
@@ -70,6 +65,19 @@
             Copyright &copy; DenBenFan, 2022.
         </div>
     </footer>
+	<script>
+		let checkbox = document.getElementById('checkbox');
+		let dropLabel = document.getElementById('dropLabel');
+		checkbox.style.display = 'none';
+
+		function showDropDown() {
+			if (checkbox.style.display === 'none') {
+				checkbox.style.display = 'block';
+			} else {
+				checkbox.style.display = 'none';
+			};
+		};
+	</script>
     <SCRIPT src="https://code.jquery.com/jquery-3.2.1.min.js"></SCRIPT>
     <script src="scripts/avail_projects.js"></script>
 </body>

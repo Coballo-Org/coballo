@@ -62,6 +62,63 @@ main{
     /*display: flex;*/
     margin: 64px 5% 32px 5%;
 }
+#select-lang{
+	border: 1px solid gray;
+	border-radius: 8px;
+	padding-left: 2%;
+	text-align: center;
+	padding-top: 1%;
+	width: 50%;
+	height: 40px;
+	font-size: 16px;
+}
+#languages{
+    font-size: 18px;
+}
+#languages h4{
+    margin-bottom: 15px;
+}
+#languages p{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+#preferred-languages{
+    font-size: 18px;
+}
+#preferred-languages h4{
+    margin-bottom: 15px;
+}
+#preferred-languages p{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+#preferred-languages input{
+    width: 20px;
+    height: 20px;
+}
+#preferred-languages button{
+    margin-top: 15px;
+}
+.errors {
+        color: red;
+}
+main .head {
+	text-align: center;
+}
+#languages input{
+    width: 20px;
+    height: 20px;
+}
+#languages button{
+    margin-top: 15px;
+}
+.errors {
+        color: red;
+}
 button{
     width: 30%;
     height: 50px;
@@ -93,8 +150,13 @@ main textarea{
 	border: 1px solid gray;
 	font-size: 16px;
 }
-.head {
-	text-align: center;
+main .form input#dropLabel {
+         width: 50%;
+         height: 40px;
+         padding-left: 2%;
+         border-radius: 8px;
+         border: 1px solid gray;
+         font-size: 16px;
 }
 footer{
     padding: 2% 5%;

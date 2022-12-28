@@ -24,8 +24,8 @@ $(function () {
 		dataType: 'json',
 		success: function (projects) {
 			$.each(projects, function (index, item) {
-				$("#project-repos").append('<li>' + item.title + '</li>')
-				$("#repo-info").append("<br><h1>Project Title:<span>" + item.title + "</span></h1><h6><span>Description:</span>" + item.description + "</h6><h6><span>Languages:</span>" + item.language + "</h6><p>README:</p><i>" + item.readme + "</i><br><br><button class='go-to-co' id='go-to-code-" + item.id + "'>Go to Code</button><button class='edit-project' id='edit-proj-" + item.id + "'>Edit Project</button><button class='delete-project' id='delete-proj-" + item.id + "'> Delete Project</button><br><br><br>")
+				$("#project-repos").append('<li><a href="#' + item.id + '">' + item.title + '</a></li>')
+				$("#repo-info").append("<br><h1 id='" + item.id + "'>Project Title:<span>" + item.title + "</span></h1><h6><span>Description:</span>" + item.description + "</h6><h6><span>Languages:</span>" + item.language.join(', ') + "</h6><p>README:</p><i>" + item.readme + "</i><br><br><button class='go-to-co' id='go-to-code-" + item.id + "'>Go to Code</button><button class='edit-project' id='edit-proj-" + item.id + "'>Edit Project</button><button class='delete-project' id='delete-proj-" + item.id + "'> Delete Project</button><br><br><br>")
 				$(function () {
 					$("#go-to-code-" + item.id).on('click', function () {
 						window.location = item.link;
@@ -51,7 +51,7 @@ $(function () {
 								location.reload(true);
 							},
 							error: function () {
-								alert("Your project has been deleted successfully");
+								alert("An error has occur, and your project could not be deleted");
 								location.reload(true);
 							},
 						});

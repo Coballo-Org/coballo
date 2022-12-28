@@ -11,5 +11,6 @@ def get_language():
     lang = []
     for key, obj in storage.all(Language).items():
         lang.append(obj.to_dict())
+    sorted_list = sorted(lang, key=lambda d: d['name'])
 
-    return jsonify(lang)
+    return jsonify(sorted_list)

@@ -28,12 +28,23 @@
     </header>
     <main>
 	    <h2 class="head"> Update an Existing Project</h2><br><br>
-	    <p><b>Title</b>: <span><input type="text" id="title"></span></p><br>
-	    <p><b>Languages</b>: <span><input type="text" id="languages"></span></p><br>
-	    <p><b>Description</b>: <span><input type="text" id="description"></span></p><br>
-	    <p><b>README</b>: <span><textarea type="text" id="readme"></textarea></span></p><br>
-	    <p><b>Github Link</b>: <span> <input type="text" id="link"></span></p><br>
-	    <br><br>
+	    <h4><b>Title</b>:</h4> <p><span><input required type="text" id="title"></span></p><br>
+	    <div class="form" id="preferred-languages">
+		    <h4>Programming Language</h4>
+		    <input type="text" class="username" id="dropLabel" onclick="showDropDown()" placeholder="Select Language">
+		    <div id="checkbox"></div>
+		    <p class="errors" id="error-msg-C"></p>
+	     </div>
+            <!--<div class="form" id="languages">
+                    <h4>Select the Languages/Frameworks</h4>
+                    <p id="select-lang" onclick="showDropDown()"></p>
+                    <div id="dropdownList"></div>
+                    <p class="errors" id="error-msg-C"></p>
+	    </div>-->
+            <h4><b>Description</b>:</h4> <p><span><input type="text" id="description"></span></p><br>
+            <h4><b>README</b>:</h4> <p><span><textarea type="text" id="readme"></textarea></span></p><br>
+            <h4><b>Github Link</b>:</h4> <p><span> <input type="text" id="link"></span></p><br>
+            <br><br>
 	    <button id="edit"> Edit Project</button>
     </main>
     <footer>
@@ -51,6 +62,20 @@
             Copyright &copy; DenBenFan, 2022.
         </div>
     </footer>
+
+     <script>
+                let checkbox = document.getElementById('checkbox');
+                let dropLabel = document.getElementById('dropLabel');
+                checkbox.style.display = 'none';
+
+                function showDropDown() {
+                        if (checkbox.style.display === 'none') {
+                                checkbox.style.display = 'block';
+                        } else {
+                                checkbox.style.display = 'none';
+                        };
+                };
+        </script>
 
 
     <SCRIPT src="https://code.jquery.com/jquery-3.2.1.min.js"></SCRIPT>

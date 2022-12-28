@@ -13,6 +13,11 @@ software engineering program at Holbeton College through the ALX initiative.
 Project Type: Full-stack </br>
 Front-end: HTML, CSS, Javascript </br>
 Back-end: Python, MySQL </br>
+## KNOWN BUGS
+
+There are currently no known bugs.
+
+
 
 ## AUTHORS
 
