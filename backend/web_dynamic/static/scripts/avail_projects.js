@@ -26,8 +26,11 @@ $(function () {
 					data: {},
 					contentType: 'application/json',
 					dataType: 'json',
-					success: function (users) {
-						$('#project-list').append('<h1>' + project.title + '</h1><p><em>created by: ' + users.first_name + ' ' + users.last_name + '</em></p><hr><p>' + project.description + '</p><br><br>');
+					success: function (user) {
+						$('#project-list').append('<h1>' + project.title + '</h1><p><em>created by: ' + user.first_name + ' ' + user.last_name + '</em></p><p><em>languages/framework: ' + project.language.join(', ') + '</em></p><hr><p>' + project.description + '</p><br><br>');
+					},
+					error: function() {
+						$('#project-list').html("<p>Error: Projects could not be loaded, please reload the page again</p>");
 					},
 				});
 			});
@@ -62,7 +65,7 @@ $(function () {
 						dataType: 'json',
 						success: function (projects) {
 							$.each(projects, function(index, project) {
-									$('#project-list').append('<h1>' + project.title + '</h1><p><em>created by: ' + user.first_name + ' ' + user.last_name + '</em></p><hr><p>' + project.description + '</p><br><br>');
+								$('#project-list').append('<h1>' + project.title + '</h1><p><em>created by: ' + user.first_name + ' ' + user.last_name + '</em></p><p><em>languages/framework: ' + project.language.join(', ') + '</em></p><hr><p>' + project.description + '</p><br><br>');
 							});
 						},
 						error: function() {
@@ -100,7 +103,7 @@ $(function () {
 						contentType: 'application/json',
 						dataType: 'json',
 						success: function (projUser) {
-							$('#project-list').append('<h1>' + project.title + '</h1><p><em>created by: ' + projUser.first_name + ' ' + projUser.last_name + '</em></p><hr><p>' + project.description + '</p><br><br>');
+							$('#project-list').append('<h1>' + project.title + '</h1><p><em>created by: ' + projUser.first_name + ' ' + projUser.last_name + '</em></p><p><em>languages/framework: ' + project.language.join(', ') + '</em></p><hr><p>' + project.description + '</p><br><br>');
 						},
 						error: function () {
 							("#error-msg-B").html("No user found for this project!");
@@ -141,6 +144,9 @@ $(function () {
 				});
 			});
 		},
+		error: function() {
+			$('#error-msg-C').html("Langugaes could not be loaded, please try agin later.");
+		},
 	});
 });
 
@@ -166,7 +172,7 @@ $(function () {
 				});
 			},
 			error: function(){
-				alert("Could not load the search results, Please try again later");
+				$('#error-msg-C').html("Could not load the search results, Please try again later");
 			},
 		});
 
@@ -183,31 +189,35 @@ $(function () {
 		items.sort(function(first, second) {
 			return second[1] - first[1];
 		});
-		console.log(items);
 
 		// Load the corresponding projects
 		$.each(items, function(index, item) {
+			console.log(item[0]);
 			$.ajax({
 				type: 'GET',
-				url: 'http://100.25.165.74:5005/coballo/projects/' + items[0].slice(1, -2),
+				url: 'http://100.25.165.74:5005/coballo/projects/' + item[0],
 				data: {},
 				contenttype: 'application/json',
 				dataType: 'json',
 				success: function(project) {
 					$('#project-list').html("");
 					console.log(project)
-					$.each(project, function(index, proj) {
-						$.ajax({
-							type: 'GET',
-							url: 'http://100.25.165.74:5005/coballo/users/' + proj.owner_id,
-							data: {},
-							contentType: 'application/json',
-							dataType: 'json',
-							success: function (users) {
-								$('#project-list').append('<h1>' + proj.title + '</h1><p><em>created by: ' + users.first_name + ' ' + users.last_name + '</em></p><hr><p>' + proj.description + '</p><br><br>');
-							},
-						});
+					$.ajax({
+						type: 'GET',
+						url: 'http://100.25.165.74:5005/coballo/users/' + project.owner_id,
+						data: {},
+						contentType: 'application/json',
+						dataType: 'json',
+						success: function (users) {
+							$('#project-list').append('<h1>' + project.title + '</h1><p><em>created by: ' + users.first_name + ' ' + users.last_name + '</em></p><p><em>languages/framework: ' + project.language.join(', ') + '</em></p><hr><p>' + project.description + '</p><br><br>');
+						},
+						error: function () {
+							$('#error-msg-C').html("This project user was not found");
+						},
 					});
+				},
+				error: function () {
+					$('#error-msg-C').html("This project could not be loaded, please try again later");
 				},
 			});
 		});
