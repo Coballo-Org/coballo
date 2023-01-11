@@ -47,6 +47,9 @@ and the 'Delete Project' button which well...you guessed right, It deletes the p
 a button is available at the right for laptop users or at the bottom of the page for mobile 
 phone users which is the create Project button, It is used to create a new project.
 
+![image](https://user-images.githubusercontent.com/99836377/211937256-3cb733b8-38bc-46dc-b18f-d808def3d35d.png)
+
+
 ## AUTHORS
 
 Akinwonjowo Dennis [Github](https://github.com/Dennisco12) / [LinkedIn](https://linkedin.com/dennis-akinwonjowo)</br>
