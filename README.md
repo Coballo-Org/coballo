@@ -28,7 +28,7 @@ $ tmux new-session -d 'gunicorn --bind 0.0.0.0:5000 web_dynamic.coballo:app'</br
 This fetches data from filestorage. To use the mysql database for storage run the following command:</br>
 $ tmux new-session -d 'COBALLO_TYPE_STORAGE=db COBALLO_DEV=coballo_dev COBALLO_DEV_PWD=coballo_dev_pwd COBALLO_HOST=localhost COBALLO_DEV_DB=coballo_dev_db guncorn --bind 0.0.0.0:5000 web_dynamic.coballo:app'</br>
 Then start the APIs with the following command:</br>
-$ tmux new-session -d 'gunicorn --bind 0.0.0.0:5001 api.app:app'</br>
+$ tmux new-session -d 'gunicorn --bind 0.0.0.0:5005 api.app:app'</br>
 You can then access the pages from your prefferred web browser on the foolowing address</br>
    http://127.0.0.1:5000/coballo</br>
 
