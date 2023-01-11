@@ -38,7 +38,14 @@ On the homepage is the signup/login form for new and existing users respectively
 Upon signup, all the available projects from other users of the platform are listed
 and you can click on any of the project to request collaboration with the owner. Also
 you can search for projects of your choice either by owner's name, project name or 
-your prefferred languages. All of which will load the corresponding projects.
+your prefferred languages. All of which will load the corresponding projects details.
+In the myproject page, A list of all the projects owned by you will be displayed, 
+And the details of each one will also be displayed. Three buttons are provided at the
+bottom of each project detail: 'Go to code' which is a link to the project repo on github,
+'Edit Project' which leads to the edit page where users can edit the details of the project
+and the 'Delete Project' button which well...you guessed right, It deletes the project. Also
+a button is available at the right for laptop users or at the bottom of the page for mobile 
+phone users which is the create Project button, It is used to create a new project.
 
 ## AUTHORS
 
