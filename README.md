@@ -12,6 +12,8 @@ can also list their projects and it will be available for others to view.
 It is a periquisite for completing the
 software engineering program at Holbeton College through the ALX initiative.
 
+![image](https://user-images.githubusercontent.com/99836377/211937722-ff2a832c-bf87-4e6e-984c-f621e457973b.png)
+
 Project Type: Full-stack </br>
 Front-end: HTML, CSS, Javascript </br>
 Back-end: Python, MySQL </br>
