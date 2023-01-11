@@ -41,6 +41,7 @@ $(function () {
 		dataType: 'json',
 		success: function (project) {
 			$("#title").val(project.title);
+			$("#dropLabel").val(project.language);
 			$("#description").val(project.description);
 			$("#readme").val(project.readme);
 			$("#link").val(project.link);
@@ -49,6 +50,7 @@ $(function () {
 			alert("Could not load this project, please try again");
 		},
 	});
+	// Upload the project
 	$(function () {
 		$("#edit").on('click', function () {
 			var $title = $("#title");

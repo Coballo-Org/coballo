@@ -28,13 +28,13 @@ $(function (){
 					"id": newUser.id,
 					"email": newUser.email,
 				}
-				alert(newUser.first_name + " account has been created successfully");
+				$("#messages").append("<p>" + newUser.first_name + " account has been created successfully</p>");
 				window.localStorage.clear();
 				window.localStorage.setItem('presentUser', JSON.stringify(presentUser));
-				window.location = "../static/myprojects.html"
+				window.location = "../static/avail-projects.html"
 			},
 			error: function() {
-				alert('An error has occured and the user cannot be created');
+				$("#messages").html('<p>An error has occured and the user cannot be created</p>');
 			}
 		});
 	});
@@ -64,13 +64,13 @@ $(function () {
 					"id": oldUser.id,
 					"email": oldUser.email,
 				}
+				$("#messages").append("<p>You have succesfully logged in</p>");
 				window.localStorage.clear();
 				window.localStorage.setItem('presentUser', JSON.stringify(presentUser));
-				window.location = "../static/myprojects.html";
-				alert("You have successfully logged in");
+				window.location = "../static/avail-projects.html";
 			},
 			error: function() {
-				alert("You have entered incorrect details, please check and try again");
+				$("#messages").html("<p>You have entered incorrect details, please check and try again</p>");
 			}
 
 		});

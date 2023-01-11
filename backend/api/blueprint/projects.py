@@ -12,7 +12,17 @@ def all_projects():
     """This returns a list of all projects in storage"""
     all_pr = []
     for k, obj in storage.all(Project).items():
-        all_pr.append(obj.to_dict())
+        search_key = 'User.' + obj.owner_id
+        try:
+            name = storage.all(User)[search_key]
+        
+            dict_copy = {}
+            for key, val in obj.to_dict().items():
+                dict_copy[key] = val
+            dict_copy['first_name'] = name.to_dict()['first_name']
+            all_pr.append(dict_copy)
+        except Exception:
+            pass
 
     sorted_list = sorted(all_pr, key=lambda d: d['title'])
     return jsonify(sorted_list)

@@ -95,6 +95,6 @@ def delete_user(user_id):
     search_key = 'User.' + user_id
     for key, obj in storage.all(User).items():
         if key == search_key:
-            storage.delete(obj)
+            obj.delete()
             return {}
     abort(404, "No User found")

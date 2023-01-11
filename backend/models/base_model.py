@@ -27,7 +27,6 @@ class BaseModel:
         updated_at = Column(DateTime, default=datetime.utcnow)
 
     def __init__(self, *args, **kwargs):
-        """Initialization of the base model"""
         if kwargs:
             for key, value in kwargs.items():
                 if key != "__class__":
@@ -76,3 +75,4 @@ class BaseModel:
     def delete(self):
         """delete the current instance from the storage"""
         models.storage.delete(self)
+        models.storage.save()
