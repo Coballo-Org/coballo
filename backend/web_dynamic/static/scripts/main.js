@@ -2,7 +2,7 @@
 
 class Request {
     constructor() {
-        this.api = 'http://localhost:5005/coballo';
+        this.api = 'https://coballobackend.onrender.com/coballo';
     }
 
     get(url) {
