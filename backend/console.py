@@ -71,7 +71,6 @@ class Coballo(cmd.Cmd):
             print("* Instance not found *")
             return False
 
-
     def do_all(self, args):
         """This list all the instance of the class given as argument
         or all instances if no class is given
@@ -87,7 +86,6 @@ class Coballo(cmd.Cmd):
                     all_objs.append(obj.to_dict())
         for item in all_objs:
             print(item)
-
 
     def do_destroy(self, args):
         """This removes an object from storage

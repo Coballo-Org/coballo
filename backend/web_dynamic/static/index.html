@@ -124,27 +124,28 @@
         </div>
     </footer>
 
-    <script>
-	    let login = document.getElementById("login");
-let signup = document.getElementById("signup");
-let loginSpan = document.getElementById("login-span");
-let signupSpan = document.getElementsByClassName("signup-span");
-
-login.style.display = "flex";
-signup.style.display = "none";
-
-function showLogin (){
-        signup.style.display = "none";
-        login.style.display = "flex";
-}
-function showSignup(){
-        login.style.display = "none";
-        signup.style.display = "flex";
-}
-    </script>
-
 
     <SCRIPT src="https://code.jquery.com/jquery-3.2.1.min.js"></SCRIPT>
-    <script src={{ url_for('scripts', filename="script.js") }}></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/script.js"></script> 
+    <script>
+	    let login = document.getElementById("login");
+        let signup = document.getElementById("signup");
+        let loginSpan = document.getElementById("login-span");
+        let signupSpan = document.getElementsByClassName("signup-span");
+
+        login.style.display = "flex";
+        signup.style.display = "none";
+
+        function showLogin (){
+                signup.style.display = "none";
+                login.style.display = "flex";
+        }
+        function showSignup(){
+                login.style.display = "none";
+                signup.style.display = "flex";
+        }
+    </script>
+
 </body>
 </html>

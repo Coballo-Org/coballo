@@ -16,7 +16,7 @@ def teardown_db(exception):
     storage.close()
 
 
-@app.route('/coballo', strict_slashes=False)
+@app.route('/', strict_slashes=False)
 def coballo():
     """This sets up the index template"""
     users = storage.all(User).values()
@@ -28,4 +28,4 @@ def coballo():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5004)
+    app.run(host='0.0.0.0', port=5004, debug=True)

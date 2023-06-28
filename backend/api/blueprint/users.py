@@ -28,18 +28,18 @@ def user_login():
     """This searches the storage for an email and a password and returns
     the corresponding user"""
     if not request.json:
-        abort(400, "Not a json")
+        return jsonify("Not a json"), 400
     if "email" not in request.json:
-        abort(400, "Add an email")
+        return jsonify("Add an email"), 400
     if "password" not in request.json:
-        abort(400, "Add a password")
+        return jsonify("Add a password"), 400
     request_dict = request.get_json()
 
     for key, obj in storage.all(User).items():
         if obj.email.lower() == request_dict['email'].lower():
             if obj.password == request_dict['password']:
                 return jsonify(obj.to_dict())
-    abort(404, "User not found")
+    return jsonify("User not found"), 400
 
 
 @app_views.route('/users/name/<user_name>', strict_slashes=False, methods=['GET'])
